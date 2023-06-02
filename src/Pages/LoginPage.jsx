@@ -1,72 +1,80 @@
-import React, { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../Context/auth.context";
-import axios from "axios";
+/* eslint-disable react/no-unescaped-entities */
+/* eslint-disable no-unused-vars */
+import {useState, useContext} from 'react'; 
+import axios from 'axios'; 
+import {Link, useNavigate} from 'react-router-dom'; 
+import authService from '../Services/auth.service'
+import { AuthContext } from '../Context/auth.context';
 
 function LoginPage() {
+  // Write State 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage]= useState(undefined);
+
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
-  const handleEmail = (e) => setEmail(e.target.value);
-  const handlePassword = (e) => setPassword(e.target.value);
+  // destructuring the authContext Object
+  const {storeToken, authenticateUser } = useContext(AuthContext);
 
-  const handleLoginSubmit = (e) => {
+  // Handle Functions that handle the change of inputs
+    const handleEmail = (e) => setEmail(e.target.value);
+    const handlePassword = (e) => setPassword(e.target.value);
+
+  // Handle Submit of the form 
+  const handleLoginSubmit = (e) =>{
     e.preventDefault();
-    const body = {
-      email,
-      password,
-    };
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
-      .then((response) => {
-        storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/");
-      })
-      .catch((err) => {
-        setErrorMessage(err.response.data.errorMessage);
-      });
-  };
+
+    const requestBody = {email, password};
+
+    authService.login(requestBody)
+        .then((response)=>{
+            storeToken(response.data.authToken);
+            
+            // authenticate the User
+            authenticateUser();
+
+            navigate('/');
+          
+        })     
+        .catch((error) =>{
+            const errorDescription = error.response.data.message; 
+            setErrorMessage(errorDescription);
+        })
+
+
+  }
+    
 
   return (
-    <div className="loginBody">
-      <div className="loginPageB">
-        <h1>Login </h1>
-        <form onSubmit={handleLoginSubmit} className="loginForm">
-          <label>Email address</label>
-          <input
-            className="css-authinput"
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleEmail}
-          />
+    <div className="LoginPage">
+    <h1>Login</h1>
 
-          <label>Password</label>
-          <input
-            className="css-authinput"
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePassword}
-          />
+    <form onSubmit={handleLoginSubmit}>
+      <label>Email:</label>
+      <input
+        type="email"
+        name="email"
+        value={email}
+        onChange={handleEmail}
+      />
 
-          <button className="loginBtnSubmit" type="submit">
-            Log in
-          </button>
-          <p className="loginFormPhraseP">Don't have an account yet?</p>
-          <Link to={"/signup"} className="signupLinkBtn">
-            Sign Up here
-          </Link>
-        </form>
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handlePassword}
+      />
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-      </div>
-    </div>
-  );
+      <button type="submit">Login</button>
+    </form>
+    { errorMessage && <p className="error-message">{errorMessage}</p> }
+
+    <p>Don't have an account yet?</p>
+    <Link to={"/signup"}> Sign Up</Link>
+  </div>
+  )
 }
 
-export default LoginPage;
+export default LoginPage

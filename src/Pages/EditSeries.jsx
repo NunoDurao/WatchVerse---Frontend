@@ -5,7 +5,7 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5005";
 
-function EditMoviePage() {
+function EditSeriePage() {
   // Write State
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");
@@ -13,23 +13,23 @@ function EditMoviePage() {
   // req.params => Express
   // useParams() => ReactJS
 
-  const { movieId } = useParams();
+  const { serieId } = useParams();
 
   const navigate = useNavigate();
 
   // Have a Side-Effect after initial rendering of component
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/movies/${movieId}`)
+      .get(`${API_URL}/api/series/${serieId}`)
       .then((response) => {
-        const oneMovie = response.data;
-        setTitle(oneMovie.title);
-        setYear(oneMovie.year);
+        const oneSerie = response.data;
+        setTitle(oneSerie.title);
+        setYear(oneSerie.year);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [movieId]);
+  }, [serieId]);
 
   // Create a function that Handles Form Submit
   const handleFormSubmit = (e) => {
@@ -42,9 +42,9 @@ function EditMoviePage() {
 
     // make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/movies/${movieId}`, requestBody)
+      .put(`${API_URL}/api/series/${serieId}`, requestBody)
       .then((response) => {
-        navigate(`/movies/${movieId}`);
+        navigate(`/series/${serieId}`);
       })
       .catch((error) => {
         console.log(error);
@@ -52,11 +52,11 @@ function EditMoviePage() {
   };
 
   // Create a delete project function
-  const deleteMovie = () => {
+  const deleteSerie = () => {
     axios
-      .delete(`${API_URL}/api/movies/${movieId}`)
+      .delete(`${API_URL}/api/series/${serieId}`)
       .then(() => {
-        navigate("/movies");
+        navigate("/series");
       })
       .catch((error) => {
         console.log(error);
@@ -85,9 +85,9 @@ function EditMoviePage() {
 
         <button type="submit">Edit</button>
       </form>
-      <button onClick={deleteMovie}>Delete Project</button>
+      <button onClick={deleteSerie}>Delete Project</button>
     </div>
   );
 }
 
-export default EditMoviePage;
+export default EditSeriePage;

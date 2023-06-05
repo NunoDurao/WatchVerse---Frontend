@@ -9,6 +9,7 @@ import MoviesDetailsPage from "./Pages/MovieDetails";
 import SeriesListPage from "./Pages/SeriesList";
 import SeriesDetailsPage from "./Pages/SerieDetails";
 import EditMoviePage from "./Pages/EditMovies";
+import EditSeriePage from "./Pages/EditSeries";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/movies/:movieId" element={<MoviesDetailsPage />} />
         <Route path="/movies/edit/:movieId" element={<EditMoviePage />} />
         <Route path="/series/:serieId" element={<SeriesDetailsPage />} />
+        <Route path="/series/edit/:serieId" element={<EditSeriePage />} />
         <Route path="/login" element={<LoginPage />} />;
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>

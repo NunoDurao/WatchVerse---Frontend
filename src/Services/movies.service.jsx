@@ -1,17 +1,17 @@
-import axios from 'axios';
+import axios from "axios";
 
 /* Axios Service that deals with Project Requests */
 
 class MoviesService {
   constructor() {
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_APP_SERVER_URL || 'http://localhost:5005'
+      baseURL: import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005",
     });
 
     // Automatically set JWT token in the headers for every request
-    this.api.interceptors.request.use(config => {
+    this.api.interceptors.request.use((config) => {
       // Retrieve the JWT token from the local storage
-      const storedToken = localStorage.getItem('authToken');
+      const storedToken = localStorage.getItem("authToken");
 
       if (storedToken) {
         config.headers = { Authorization: `Bearer ${storedToken}` };
@@ -22,27 +22,27 @@ class MoviesService {
   }
 
   // POST /api/movies
-  createProject = requestBody => {
-    return this.api.post('/api/movies', requestBody);
+  createMovie = (requestBody) => {
+    return this.api.post("/api/movies", requestBody);
   };
 
   // GET /api/movies
   getAllmovies = () => {
-    return this.api.get('/api/movies');
+    return this.api.get("/api/movies");
   };
 
   // GET /api/movies/:id
-  getProject = id => {
+  getMovie = (id) => {
     return this.api.get(`/api/movies/${id}`);
   };
 
   // PUT /api/movies/:id
-  updateProject = (id, requestBody) => {
+  updateMovie = (id, requestBody) => {
     return this.api.put(`/api/movies/${id}`, requestBody);
   };
 
   // DELETE /api/movies/:id
-  deleteProject = id => {
+  deleteMovie = (id) => {
     return this.api.delete(`/api/movies/${id}`);
   };
 }

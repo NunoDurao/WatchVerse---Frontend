@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-/*import AddMovie from '../Addmovie';*/
+import AddMovie from "./AddMovies";
 
 // Pass the API_URL
 
@@ -26,7 +26,7 @@ function MoviesListPage() {
   console.log("frontend call", movies);
   return (
     <div className="movie-list-page">
-      {/* <AddMovie refreshMovies={getAllMovies} />*/}
+      <AddMovie refreshMovies={getAllMovies} />
       {movies.map((movie) => {
         return (
           <div className="movie-card card" key={movie._id}>

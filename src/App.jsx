@@ -21,6 +21,7 @@ function App() {
         <Route path="/series" element={<SeriesListPage />} />
         <Route path="/movies/:movieId" element={<MoviesDetailsPage />} />
         <Route path="/movies/edit/:movieId" element={<EditMoviePage />} />
+
         <Route path="/series/:serieId" element={<SeriesDetailsPage />} />
         <Route path="/series/edit/:serieId" element={<EditSeriePage />} />
         <Route path="/login" element={<LoginPage />} />;

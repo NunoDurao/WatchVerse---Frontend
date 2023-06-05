@@ -1,34 +1,31 @@
 /* eslint-disable react/prop-types */
-import {useState} from 'react';
-
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import seriesService from '../Services/series.service';
 
 function AddSerie(props) {
-
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");  
+  const [year, setYear] = useState("");  
 
-
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = {title, description};
+    const requestBody = { title, year };
 
     seriesService.createSerie(requestBody)
-    .then(()=>{
+      .then(() => {
         setTitle("");
-        setDescription("");
+        setYear("");
         props.refreshSeries();
-    })
-    .catch((error)=>console.log(error));
+      })
+      .catch((error) => console.log(error));
   }
-
 
   return (
     <div className="add-serie">
-      <h3>Add serie</h3>
- 
-      <form onSubmit={handleSubmit}>      
+      <h3>Add Serie</h3>
+
+      <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input
           type="text"
@@ -36,15 +33,15 @@ function AddSerie(props) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
- 
-        <label>Description:</label>
-        <textarea
+
+        <label>Year:</label>
+        <input
           type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          name="year"
+          value={year}
+          onChange={(e) => setYear(e.target.value)}
         />
- 
+
         <button type="submit">Submit</button>
       </form>
     </div>

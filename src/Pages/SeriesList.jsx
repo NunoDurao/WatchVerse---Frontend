@@ -25,7 +25,7 @@ function SeriesListPage() {
   console.log("frontend call", series);
   return (
     <div className="serie-list-page">
-      <Addserie refreshseries={getAllSeries} />
+      <Addserie refreshSeries={getAllSeries} />
       {series.map((serie) => {
         return (
           <div className="serie-card card" key={serie._id}>

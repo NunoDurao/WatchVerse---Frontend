@@ -1,25 +1,26 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import seriesService from '../Services/series.service';
+import React, { useState } from "react";
+import seriesService from "../Services/series.service";
 
 function AddSeries(props) {
   const [title, setTitle] = useState("");
-  const [year, setYear] = useState("");  
+  const [year, setYear] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const requestBody = { title, year };
 
-    seriesService.createSerie(requestBody)
+    seriesService
+      .createSerie(requestBody)
       .then(() => {
         setTitle("");
         setYear("");
         props.refreshSeries();
       })
       .catch((error) => console.log(error));
-  }
+  };
 
   return (
     <div className="add-series">
@@ -45,7 +46,7 @@ function AddSeries(props) {
         <button type="submit">Submit</button>
       </form>
     </div>
-  )
+  );
 }
 
 export default AddSeries;

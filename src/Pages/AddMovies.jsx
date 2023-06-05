@@ -1,14 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from "react";
 
 import moviesService from "../Services/movies.service";
-
-// STEPS:
-// 1) Create a Form;
-// 2) Connect the input values with state values;
-// 3) Create handle functions to handle change of inputs;
-// 4) Create function that handles form submit
-// 5) Inside this function, create a post request via Axios.
 
 function AddMovie(props) {
   // 2) Write State

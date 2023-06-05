@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import React, { useState } from "react";
 
 import moviesService from "../Services/movies.service";
 

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import seriesService from '../Services/series.service';
 
-function AddSerie(props) {
+function AddSeries(props) {
   const [title, setTitle] = useState("");
   const [year, setYear] = useState("");  
 
@@ -22,8 +22,8 @@ function AddSerie(props) {
   }
 
   return (
-    <div className="add-serie">
-      <h3>Add Serie</h3>
+    <div className="add-series">
+      <h3>Add Series</h3>
 
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
@@ -48,4 +48,4 @@ function AddSerie(props) {
   )
 }
 
-export default AddSerie;
+export default AddSeries;

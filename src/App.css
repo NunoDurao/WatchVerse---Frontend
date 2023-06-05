@@ -1,3 +1,18 @@
+body {
+  background-image: url('../public/background-image.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+
+
+
+
+
+
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -44,3 +59,5 @@
 .list-image {
   height: 300px;
 }
+
+

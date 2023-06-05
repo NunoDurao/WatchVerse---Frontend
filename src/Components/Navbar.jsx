@@ -17,6 +17,9 @@ function Navbar() {
           <Link to="/movies">
             <button>Movies</button>
           </Link>
+          <Link to="/series">
+            <button>Series</button>
+          </Link>
           <button onClick={logOutUser}>Logout</button>
           <p>{user && user.name}</p>
         </div>

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-/*import Addserie from '../Addserie';*/
+import Addserie from './AddSeries';
 
 // Pass the API_URL
 
@@ -26,7 +25,7 @@ function SeriesListPage() {
   console.log("frontend call", series);
   return (
     <div className="serie-list-page">
-      {/* <Addserie refreshseries={getAllseries} />*/}
+      <Addserie refreshseries={getAllSeries} />
       {series.map((serie) => {
         return (
           <div className="serie-card card" key={serie._id}>

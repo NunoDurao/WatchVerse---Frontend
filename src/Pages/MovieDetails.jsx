@@ -1,36 +1,47 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import moviesService from "../Services/movies.service";
 
 function MoviesDetailsPage() {
-  // write state. By default it'll be null because we don't have
-  // the movies
-  const [movie, setMovies] = useState(null);
+  const [movie, setMovie] = useState(null);
+  const [review, setReview] = useState("");
 
-  // grab the moviesId from route params
   const { movieId } = useParams();
 
-  // function to call axios to do a GET request
-  // to find a movies by the Id.
   const getMovie = () => {
     moviesService
       .getMovie(movieId)
       .then((response) => {
         const oneMovie = response.data;
-        console.log("one movie info", oneMovie);
-        setMovies(oneMovie);
+        setMovie(oneMovie);
       })
       .catch((error) => console.log(error));
   };
 
-  // Side-effect after initial render of the component.
-  // The empty array must be as a parameter to tell to React that
-  // it'll happen after it renders the component
-
   useEffect(() => {
     getMovie();
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Make a request to the backend to add the review
+    const requestBody = {
+      review: review,
+      movieId: movieId,
+    };
+
+    // Make a POST request to add the review
+    moviesService
+      .addReview(requestBody)
+      .then((response) => {
+        // Refresh the movie data
+        getMovie();
+        setReview("");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="movie-details">
@@ -38,16 +49,31 @@ function MoviesDetailsPage() {
         <div>
           <h1>{movie.title}</h1>
           <p>{movie.year}</p>
-          <img src={movie.image} />
+          <img src={movie.image} alt={movie.title} />
+          <div>
+            <h3>Reviews</h3>
+            {movie.reviews.map((review) => (
+              <p key={review._id}>{review.review}</p>
+            ))}
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+                placeholder="Add a review"
+              />
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       )}
 
       <Link to={`/movies/edit/${movieId}`}>
-        <button>Edit movies</button>
+        <button>Edit Movie</button>
       </Link>
 
       <Link to="/movies">
-        <button>Back to movies</button>
+        <button>Back to Movies</button>
       </Link>
     </div>
   );

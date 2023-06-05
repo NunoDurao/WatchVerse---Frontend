@@ -4,6 +4,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignupPage";
 import HomePage from "./Pages/HomePage";
 import Navbar from "./Components/Navbar";
+import MoviesListPage from "./Pages/MovieList";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Navbar/>
       <Routes>
       <Route path="/" element={<HomePage/>}/>
+      <Route path="/movies" element={<MoviesListPage/>}/>
         <Route path="/login" element={<LoginPage />}/>;
         <Route path="/signup" element={<SignUpPage/>}/>
       </Routes>

@@ -32,6 +32,7 @@ function MoviesListPage() {
           <div className="movie-card card" key={movie._id}>
             <Link to={`/movies/${movie._id}`}>
               <h3>{movie.title}</h3>
+              <img className="list-image" src={movie.image} />
             </Link>
           </div>
         );

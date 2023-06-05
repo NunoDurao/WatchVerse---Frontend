@@ -30,7 +30,7 @@ function LoginPage() {
     authService.login(requestBody)
         .then((response)=>{
             storeToken(response.data.authToken);
-            
+            console.log(response.data.authToken);
             // authenticate the User
             authenticateUser();
 

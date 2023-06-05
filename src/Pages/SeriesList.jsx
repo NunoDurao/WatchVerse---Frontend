@@ -31,6 +31,7 @@ function SeriesListPage() {
           <div className="serie-card card" key={serie._id}>
             <Link to={`/series/${serie._id}`}>
               <h3>{serie.title}</h3>
+              <img className="list-image" src={serie.image} />
             </Link>
           </div>
         );

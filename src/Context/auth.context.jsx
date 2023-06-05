@@ -16,6 +16,7 @@ function AuthProviderWrapper(props) {
   // Store Token function
   const storeToken = (token) => {
     localStorage.setItem("authToken", token);
+    console.log("authToken", token);
   };
 
   // Authentication Function
@@ -30,6 +31,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(response.data.user);
+          console.log('user: ',response.data.user);
         })
         .catch(() => {
           // catch possibility whenever it finds an invalid token

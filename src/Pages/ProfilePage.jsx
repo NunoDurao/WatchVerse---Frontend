@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
+  const {id} = useParams()
 
   useEffect(() => {
     // Fetch user data from the API
     axios
-      .get(`${API_URL}/profile/:id`, { withCredentials: true })
+      .get(`${API_URL}/profile/${id}`, { withCredentials: true })
       .then((response) => {
         setUser(response.data);
       })

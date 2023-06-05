@@ -45,8 +45,15 @@ class MoviesService {
   deleteMovie = (id) => {
     return this.api.delete(`/api/movies/${id}`);
   };
-}
 
+  addReview = (movieId, requestBody) => {
+    return this.api.post(`api/movies/${movieId}/reviews`, requestBody);
+  };
+
+  getReviews(movieId) {
+    return this.api.get(`/api/movies/${movieId}/reviews`);
+  }
+}
 // Create one instance object
 const moviesService = new MoviesService();
 

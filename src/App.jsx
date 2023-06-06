@@ -12,6 +12,7 @@ import EditMoviePage from "./Pages/EditMovies";
 import EditSeriePage from "./Pages/EditSeries";
 import ProfilePage from "./Pages/ProfilePage";
 
+
 function App() {
   return (
     <div className="App">

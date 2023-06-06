@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../Context/auth.context';
 import { styled, alpha } from '@mui/material/styles';
@@ -13,7 +13,11 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
+  backgroundColor: '#000',
   zIndex: theme.zIndex.drawer + 1,
+  width: '100%',
+  top: 0,
+  left: 0,
 }));
 
 const Search = styled('div')(({ theme }) => ({
@@ -52,40 +56,53 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
-  console.log(isLoggedIn);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   return (
-    <CustomAppBar position="static">
+    <CustomAppBar position={isHomePage ? 'absolute' : 'static'}>
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           WatchVerse
         </Typography>
-        <Box>
-          <Link to="/">
-            <Button color="inherit">Home</Button>
+        <Box sx={{ display: 'flex' }}>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Button color="inherit" sx={{ textTransform: 'none' }}>
+              Home
+            </Button>
           </Link>
           {isLoggedIn ? (
             <>
-              <Link to="/movies">
-                <Button color="inherit">Movies</Button>
+              <Link to="/movies" style={{ textDecoration: 'none' }}>
+                <Button color="inherit" sx={{ textTransform: 'none' }}>
+                  Movies
+                </Button>
               </Link>
-              <Link to="/series">
-                <Button color="inherit">Series</Button>
+              <Link to="/series" style={{ textDecoration: 'none' }}>
+                <Button color="inherit" sx={{ textTransform: 'none' }}>
+                  Series
+                </Button>
               </Link>
-              <Link to={`/profile/${user._id}`}>
-                <Button color="inherit">Profile</Button>
+              <Link to={`/profile/${user._id}`} style={{ textDecoration: 'none' }}>
+                <Button color="inherit" sx={{ textTransform: 'none' }}>
+                  Profile
+                </Button>
               </Link>
-              <Button color="inherit" onClick={logOutUser}>
+              <Button color="inherit" onClick={logOutUser} sx={{ textTransform: 'none' }}>
                 Logout
               </Button>
             </>
           ) : (
             <>
-              <Link to="/signup">
-                <Button color="inherit">Signup</Button>
+              <Link to="/signup" style={{ textDecoration: 'none' }}>
+                <Button color="inherit" sx={{ textTransform: 'none' }}>
+                  Signup
+                </Button>
               </Link>
-              <Link to="/login">
-                <Button color="inherit">Login</Button>
+              <Link to="/login" style={{ textDecoration: 'none' }}>
+                <Button color="inherit" sx={{ textTransform: 'none' }}>
+                  Login
+                </Button>
               </Link>
             </>
           )}
@@ -105,4 +122,8 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
 

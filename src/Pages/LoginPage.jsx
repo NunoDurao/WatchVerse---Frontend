@@ -1,12 +1,49 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import {useState, useContext} from 'react'; 
+import {useState, useContext, useEffect} from 'react'; 
 import axios from 'axios'; 
 import {Link, useNavigate} from 'react-router-dom'; 
 import authService from '../Services/auth.service'
 import { AuthContext } from '../Context/auth.context';
+import firebase from '../firebaseConfig';
+import {useAuthState} from "react-firebase-hooks/auth"
+import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+const auth = firebase.auth()
 
 function LoginPage() {
+const [user] = useAuthState(auth)
+console.log(user)
+
+const handleSocialAuth = async ( ) => {
+  const body = {
+    name: user.displayName,
+    email: user.email,
+    password: user.uid
+  }
+
+  const response = await axios .post(`${import.meta.env.VITE_API_URL}/auth/signup`, body)
+
+  storeToken(response.authToken)
+  authenticateUser()
+  navigate("/home")
+}
+
+useEffect (() => {
+  handleSocialAuth()
+}, [user])
+
+const signInWithGoogle = () =>{
+  const provider = new GoogleAuthProvider()
+  signInWithPopup(auth, provider)
+}
+
+const signInWithGithub = () =>{
+  const provider = new GithubAuthProvider()
+  signInWithPopup(auth, provider)
+}
+
+
+
   // Write State 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,33 +85,33 @@ function LoginPage() {
 
   return (
     <div className="LoginPage">
-    <h1>Login</h1>
+      <h1>Login</h1>
 
-    <form onSubmit={handleLoginSubmit}>
-      <label>Email:</label>
-      <input
-        type="email"
-        name="email"
-        value={email}
-        onChange={handleEmail}
-      />
+      <form onSubmit={handleLoginSubmit}>
+        <label>Email:</label>
+        <input type="email" name="email" value={email} onChange={handleEmail} />
 
-      <label>Password:</label>
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handlePassword}
-      />
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={password}
+          onChange={handlePassword}
+        />
 
-      <button type="submit">Login</button>
-    </form>
-    { errorMessage && <p className="error-message">{errorMessage}</p> }
+        <button type="submit">Login</button>
+      </form>
+      <button onClick={signInWithGoogle}>Sign in with Google</button>
+      <button onClick={signInWithGithub}>Sign in with Github</button>
+      <button onClick={() => auth.signOut()}>Logout</button>
 
-    <p>Don't have an account yet?</p>
-    <Link to={"/signup"}> Sign Up</Link>
-  </div>
-  )
+      {user ? <p>You are logged in</p> : <p>You are logged out</p>}
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      <p>Don't have an account yet?</p>
+      <Link to={"/signup"}> Sign Up</Link>
+    </div>
+  );
 }
 
 export default LoginPage

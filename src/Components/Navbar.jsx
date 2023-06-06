@@ -20,11 +20,11 @@ function Navbar() {
           <Link to="/series">
             <button>Series</button>
           </Link>
-          <Link to={`/profile`}>
+          <Link to={`/profile/${user._id}`}>
             <button>Profile</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>
-          <p>{user && user.name}</p>
+          {/*<p>{user && user.name}</p>*/}
         </div>
       ) : (
         <div>

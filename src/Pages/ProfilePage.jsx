@@ -6,7 +6,9 @@ const API_URL = "http://localhost:5005";
 
 function ProfilePage() {
   const [user, setUser] = useState(null);
-  const {id} = useParams()
+  const [name, setName] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
     // Fetch user data from the API
@@ -18,7 +20,25 @@ function ProfilePage() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
+
+  const handleUpdateProfile = () => {
+    // Make PUT request to update the profile
+    axios
+      .put(
+        `${API_URL}/profile/${id}`,
+        { name, profilePhoto },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        setUser(response.data);
+        setName("");
+        setProfilePhoto("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="profile-page">
@@ -27,6 +47,21 @@ function ProfilePage() {
         <div>
           <p>Name: {user.name}</p>
           <p>Email: {user.email}</p>
+          <div>
+            <input
+              type="text"
+              placeholder="Enter name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Enter profile photo URL"
+              value={profilePhoto}
+              onChange={(e) => setProfilePhoto(e.target.value)}
+            />
+            <button onClick={handleUpdateProfile}>Update Profile</button>
+          </div>
         </div>
       ) : (
         <p>Loading user profile...</p>

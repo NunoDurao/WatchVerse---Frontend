@@ -25,6 +25,7 @@ function AddMovie(props) {
         // console.log("response is: ", response);
         // response carries "fileUrl" which we can use to update the state
         setImageUrl(response.fileUrl);
+        console.log(response);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
@@ -69,6 +70,14 @@ function AddMovie(props) {
         />
 
         <input type="file" onChange={(e) => handleFileUpload(e)} />
+
+        {/* Display the image if the imageUrl is available */}
+        {imageUrl && (
+          <div>
+            <h4>Uploaded Image:</h4>
+            <img src={imageUrl} alt="Uploaded" />
+          </div>
+        )}
 
         <button type="submit">Submit</button>
       </form>

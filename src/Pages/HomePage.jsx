@@ -3,7 +3,7 @@
 function HomePage() {
   return (
     <div className="homepage-container">
-      <h1>Home Page</h1>
+      <h1>WatchVerse</h1>
     </div>
   );
 }

@@ -1,88 +1,89 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import {useState, useContext, useEffect} from 'react'; 
-import axios from 'axios'; 
-import {Link, useNavigate} from 'react-router-dom'; 
-import authService from '../Services/auth.service'
-import { AuthContext } from '../Context/auth.context';
-import firebase from '../firebaseConfig';
-import {useAuthState} from "react-firebase-hooks/auth"
-import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
-const auth = firebase.auth()
+import { useState, useContext, useEffect } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import authService from "../Services/auth.service";
+import { AuthContext } from "../Context/auth.context";
+import firebase from "../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
+const auth = firebase.auth();
 
 function LoginPage() {
-const [user] = useAuthState(auth)
-console.log(user)
+  const [user] = useAuthState(auth);
+  console.log(user);
 
-  // Write State 
+  // Write State
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage]= useState(undefined);
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
 
   // destructuring the authContext Object
-  const {storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   // Handle Functions that handle the change of inputs
-    const handleEmail = (e) => setEmail(e.target.value);
-    const handlePassword = (e) => setPassword(e.target.value);
+  const handleEmail = (e) => setEmail(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
 
-  // Handle Submit of the form 
-  const handleLoginSubmit = (e) =>{
+  // Handle Submit of the form
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = {email, password};
+    const requestBody = { email, password };
 
-    authService.login(requestBody)
-        .then((response)=>{
-            storeToken(response.data.authToken);
-            console.log(response.data.authToken);
-            // authenticate the User
-            authenticateUser();
+    authService
+      .login(requestBody)
+      .then((response) => {
+        storeToken(response.data.authToken);
+        console.log(response.data.authToken);
+        // authenticate the User
+        authenticateUser();
 
-            navigate('/');
-          
-        })     
-        .catch((error) =>{
-            const errorDescription = error.response.data.message; 
-            setErrorMessage(errorDescription);
-        })
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
+  };
 
-        const handleSocialAuth = async () => {
-          const body = {
-            name: user.displayName,
-            email: user.email,
-            password: user.uid,
-          };
+  const handleSocialAuth = async () => {
+    const body = {
+      name: user.displayName,
+      email: user.email,
+      password: user.uid,
+    };
 
-          const response = await axios.post(
-            `${import.meta.env.VITE_API_URL}/auth/signup`,
-            body
-          );
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth/signup`,
+      body
+    );
 
-          storeToken(response.authToken);
-          authenticateUser();
-          navigate("/home");
-        };
+    storeToken(response.authToken);
+    authenticateUser();
+    navigate("/home");
+  };
 
-        useEffect(() => {
-          handleSocialAuth();
-        }, [user]);
+  useEffect(() => {
+    handleSocialAuth();
+  }, [user]);
 
-        const signInWithGoogle = () => {
-          const provider = new GoogleAuthProvider();
-          signInWithPopup(auth, provider);
-        };
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
 
-        const signInWithGithub = () => {
-          const provider = new GithubAuthProvider();
-          signInWithPopup(auth, provider);
-        };
-
-
-  }
-    
+  const signInWithGithub = () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider);
+  };
 
   return (
     <div className="LoginPage">
@@ -115,4 +116,4 @@ console.log(user)
   );
 }
 
-export default LoginPage
+export default LoginPage;

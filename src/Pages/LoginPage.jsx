@@ -14,36 +14,6 @@ function LoginPage() {
 const [user] = useAuthState(auth)
 console.log(user)
 
-const handleSocialAuth = async ( ) => {
-  const body = {
-    name: user.displayName,
-    email: user.email,
-    password: user.uid
-  }
-
-  const response = await axios .post(`${import.meta.env.VITE_API_URL}/auth/signup`, body)
-
-  storeToken(response.authToken)
-  authenticateUser()
-  navigate("/home")
-}
-
-useEffect (() => {
-  handleSocialAuth()
-}, [user])
-
-const signInWithGoogle = () =>{
-  const provider = new GoogleAuthProvider()
-  signInWithPopup(auth, provider)
-}
-
-const signInWithGithub = () =>{
-  const provider = new GithubAuthProvider()
-  signInWithPopup(auth, provider)
-}
-
-
-
   // Write State 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -78,6 +48,37 @@ const signInWithGithub = () =>{
             const errorDescription = error.response.data.message; 
             setErrorMessage(errorDescription);
         })
+
+        const handleSocialAuth = async () => {
+          const body = {
+            name: user.displayName,
+            email: user.email,
+            password: user.uid,
+          };
+
+          const response = await axios.post(
+            `${import.meta.env.VITE_API_URL}/auth/signup`,
+            body
+          );
+
+          storeToken(response.authToken);
+          authenticateUser();
+          navigate("/home");
+        };
+
+        useEffect(() => {
+          handleSocialAuth();
+        }, [user]);
+
+        const signInWithGoogle = () => {
+          const provider = new GoogleAuthProvider();
+          signInWithPopup(auth, provider);
+        };
+
+        const signInWithGithub = () => {
+          const provider = new GithubAuthProvider();
+          signInWithPopup(auth, provider);
+        };
 
 
   }

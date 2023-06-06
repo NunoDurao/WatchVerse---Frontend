@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import authService from "../Services/auth.service";
 
 const API_URL = "http://localhost:5005";
 
@@ -10,12 +11,15 @@ function ProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState("");
   const { id } = useParams();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Fetch user data from the API
-    axios
-      .get(`${API_URL}/profile/${id}`, { withCredentials: true })
+    authService
+      .profile(id)
       .then((response) => {
         setUser(response.data);
+        setName(response.data.name);
       })
       .catch((error) => {
         console.log(error);
@@ -23,21 +27,16 @@ function ProfilePage() {
   }, [id]);
 
   const handleUpdateProfile = () => {
+    let requestBody = {name, profilePhoto};
     // Make PUT request to update the profile
-    axios
-      .put(
-        `${API_URL}/profile/${id}`,
-        { name, profilePhoto },
-        { withCredentials: true }
-      )
-      .then((response) => {
-        setUser(response.data);
-        setName("");
-        setProfilePhoto("");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      authService
+        .profilePicture(id, requestBody)
+        .then(() => {
+         navigate(0);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
   };
 
   return (

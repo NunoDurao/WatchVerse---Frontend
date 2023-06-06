@@ -21,6 +21,13 @@ class MoviesService {
     });
   }
 
+  //POST upload images
+  uploadImage = (file) => {
+  return api.post("/upload", file)
+    .then(res => res.data)
+    .catch(errorHandler);
+};
+
   // POST /api/movies
   createMovie = (requestBody) => {
     return this.api.post("/api/movies", requestBody);

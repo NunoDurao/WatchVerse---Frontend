@@ -1,9 +1,10 @@
 /* eslint-disable no-undef */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from '../Context/auth.context';
 import moviesService from "../Services/movies.service";
 
 function MoviesDetailsPage() {
@@ -11,6 +12,8 @@ function MoviesDetailsPage() {
   const [review, setReview] = useState({ content: "", rating: "" });
 
   const { movieId } = useParams();
+
+  const {user} = useContext(AuthContext);
 
   const getMovie = async () => {
     try {
@@ -33,7 +36,7 @@ function MoviesDetailsPage() {
     const requestBody = {
       content: review.content,
       rating: review.rating,
-      user: req.payload._id,
+      user: user,
     };
 
     // Make a POST request to add the review

@@ -78,11 +78,21 @@ const Navbar = () => {
                   Movies
                 </Button>
               </Link>
+              <Link to="/random-movies" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
+                  Random Movies
+                </Button>
+              </Link>        
               <Link to="/series" style={{ textDecoration: "none" }}>
                 <Button color="inherit" sx={{ textTransform: "none" }}>
                   Series
                 </Button>
               </Link>
+              <Link to="/random-series" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
+                  Random Series
+                </Button>
+              </Link> 
               <Link
                 to={`/profile/${user._id}`}
                 style={{ textDecoration: "none" }}

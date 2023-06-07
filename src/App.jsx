@@ -11,7 +11,8 @@ import SeriesDetailsPage from "./Pages/SerieDetails";
 import EditMoviePage from "./Pages/EditMovies";
 import EditSeriePage from "./Pages/EditSeries";
 import ProfilePage from "./Pages/ProfilePage";
-
+import RandomMovies from "./Pages/RandomMovies";
+import RandomSeries from "./Pages/RondomSeries";
 
 function App() {
   return (
@@ -22,8 +23,10 @@ function App() {
         <Route path="/movies" element={<MoviesListPage />} />
         <Route path="/series" element={<SeriesListPage />} />
         <Route path="/movies/:movieId" element={<MoviesDetailsPage />} />
+        <Route path="/random-movies" element={<RandomMovies />} />
         <Route path="/movies/edit/:movieId" element={<EditMoviePage />} />
         <Route path="/series/:serieId" element={<SeriesDetailsPage />} />
+        <Route path="/random-series" element={<RandomSeries />} />
         <Route path="/series/edit/:serieId" element={<EditSeriePage />} />
         <Route path="/profile/:id" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />;

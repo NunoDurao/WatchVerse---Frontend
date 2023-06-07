@@ -65,7 +65,7 @@ function EditSeriePage() {
 
   return (
     <div className="edit-project-page">
-      <h3>Edit the Project</h3>
+      <h3>Edit Series</h3>
 
       <form onSubmit={handleFormSubmit}>
         <label>Title:</label>
@@ -85,7 +85,7 @@ function EditSeriePage() {
 
         <button type="submit">Edit</button>
       </form>
-      <button onClick={deleteSerie}>Delete Project</button>
+      <button onClick={deleteSerie}>Delete Series</button>
     </div>
   );
 }

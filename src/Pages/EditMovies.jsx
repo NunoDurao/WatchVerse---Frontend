@@ -65,7 +65,7 @@ function EditMoviePage() {
 
   return (
     <div className="edit-project-page">
-      <h3>Edit the Project</h3>
+      <h3>Edit Movie</h3>
 
       <form onSubmit={handleFormSubmit}>
         <label>Title:</label>
@@ -85,7 +85,7 @@ function EditMoviePage() {
 
         <button type="submit">Edit</button>
       </form>
-      <button onClick={deleteMovie}>Delete Project</button>
+      <button onClick={deleteMovie}>Delete Movie</button>
     </div>
   );
 }

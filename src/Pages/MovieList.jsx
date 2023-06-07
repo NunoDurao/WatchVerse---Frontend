@@ -7,6 +7,8 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import AddMovie from "./AddMovies";
 import Grid from "@mui/material/Grid";
+import CheckSharpIcon from "@mui/icons-material/CheckSharp";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const API_URL = "http://localhost:5005";
 
@@ -26,11 +28,19 @@ function MoviesListPage() {
   };
 
   useEffect(() => {
-    getAllMovies();  
+    getAllMovies();
   }, []);
 
   const handleYearChange = (event) => {
     setSelectedYear(event.target.value);
+  };
+
+  const handleLikeMovie = (movieId) => {
+    // Logic to add movie to liked movies
+  };
+
+  const handleCheckMovie = (movieId) => {
+    // Logic to add movie to watched movies
   };
 
   return (
@@ -49,17 +59,47 @@ function MoviesListPage() {
       <Grid container spacing={2}>
         {movies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
-            <Card sx={{ height: "100%" }}>
+            <Card
+              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+            >
               <Link to={`/movies/${movie._id}`}>
-                <CardMedia
-                  component="img"
-                  src={movie.image}
-                  alt={movie.title}
-                  style={{
-                    objectFit: "contain",
-                    maxHeight: "300px", // Adjust the maxHeight as per your preference
-                  }}
-                />
+                <div style={{ position: "relative", flex: 1 }}>
+                  <CardMedia
+                    component="img"
+                    src={movie.image}
+                    alt={movie.title}
+                    style={{
+                      objectFit: "contain",
+                      maxHeight: "100%",
+                    }}
+                  />
+                  <CheckSharpIcon
+                    onClick={() => handleCheckMovie(movie._id)}
+                    style={{
+                      position: "absolute",
+                      top: 10,
+                      right: 10,
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                      zIndex: 1, // Ensure the button is positioned above the card
+                    }}
+                  />
+                  <FavoriteIcon
+                    onClick={() => handleLikeMovie(movie._id)}
+                    style={{
+                      position: "absolute",
+                      top: 10,
+                      left: 10,
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                      zIndex: 1, // Ensure the button is positioned above the card
+                    }}
+                  />
+                </div>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {movie.title}

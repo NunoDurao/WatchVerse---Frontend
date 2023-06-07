@@ -57,7 +57,11 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
+  const isHomePage = location.pathname === "/"; // Change the path to match your homepage
+
+  if (isHomePage) {
+    return null; // Return null to hide the navbar on the homepage
+  }
 
   return (
     <CustomAppBar position="absolute">
@@ -82,7 +86,7 @@ const Navbar = () => {
                 <Button color="inherit" sx={{ textTransform: "none" }}>
                   Random Movies
                 </Button>
-              </Link>        
+              </Link>
               <Link to="/series" style={{ textDecoration: "none" }}>
                 <Button color="inherit" sx={{ textTransform: "none" }}>
                   Series
@@ -92,7 +96,7 @@ const Navbar = () => {
                 <Button color="inherit" sx={{ textTransform: "none" }}>
                   Random Series
                 </Button>
-              </Link> 
+              </Link>
               <Link
                 to={`/profile/${user._id}`}
                 style={{ textDecoration: "none" }}

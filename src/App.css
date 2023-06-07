@@ -51,6 +51,21 @@ body {
   height: 300px;
 }
 
+/* HOMEPAGE */
 
+.homepage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
 
+.right-aligned-content {
+  text-align: right;
+}
 
+.right-aligned-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 20px; /* Adjust the margin-top value as needed */
+}

@@ -1,11 +1,10 @@
-/* eslint-disable no-undef */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { AuthContext } from '../Context/auth.context';
+import { AuthContext } from "../Context/auth.context";
 import moviesService from "../Services/movies.service";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -13,12 +12,13 @@ function MoviesDetailsPage() {
 
   const { movieId } = useParams();
 
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const getMovie = async () => {
     try {
       const response = await moviesService.getMovie(movieId);
       const oneMovie = response.data;
+      console.log("Movie Data:", oneMovie);
       setMovie(oneMovie);
     } catch (error) {
       console.log(error);
@@ -59,12 +59,21 @@ function MoviesDetailsPage() {
           <img src={movie.image} alt={movie.title} />
           <div>
             <h3>Reviews</h3>
-            {movie.reviews.map((review) => (
-              <div key={review._id}>
-                <p>{review.content}</p>
-                <p>Rating: {review.rating}</p>
-              </div>
-            ))}
+            {movie && movie.reviews.length > 0 ? (
+              movie.reviews.map((review) => {
+                console.log("Review Content:", review.content);
+                console.log("Review Rating:", review.rating);
+                return (
+                  <div key={review._id}>
+                    <p>Review: {review.content}</p>
+                    <p>Rating: {review.rating}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>No reviews available</p>
+            )}
+
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -75,13 +84,12 @@ function MoviesDetailsPage() {
                 placeholder="Add a review"
               />
 
-              <input
-                type="number"
-                value={review.rating}
-                onChange={(e) =>
-                  setReview({ ...review, rating: parseInt(e.target.value) })
-                }
-                placeholder="Rating (1-5)"
+              <Rating
+                name="movie-rating"
+                value={review.rating ? parseFloat(review.rating) : 0}
+                onChange={(event, newValue) => {
+                  setReview({ ...review, rating: newValue.toString() });
+                }}
               />
 
               <button type="submit">Submit</button>
@@ -97,6 +105,14 @@ function MoviesDetailsPage() {
       <Link to="/movies">
         <button>Back to Movies</button>
       </Link>
+
+      <Box
+        sx={{
+          width: 200,
+          display: "flex",
+          alignItems: "center",
+        }}
+      ></Box>
     </div>
   );
 }

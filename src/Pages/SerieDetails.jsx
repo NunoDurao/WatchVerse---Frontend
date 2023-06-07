@@ -1,21 +1,15 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import seriesService from "../Services/series.service";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
 
 function SeriesDetailsPage() {
-  // write state. By default it'll be null because we don't have
-  // the series
   const [serie, setSeries] = useState(null);
-  const [review, setReview] = useState("");
-
-  // grab the seriesId from route params
+  const [review, setReview] = useState({ content: "", rating: "" });
   const { serieId } = useParams();
 
-  // function to call axios to do a GET request
-  // to find a series by the Id.
   const getSerie = () => {
     seriesService
       .getSerie(serieId)
@@ -27,10 +21,6 @@ function SeriesDetailsPage() {
       .catch((error) => console.log(error));
   };
 
-  // Side-effect after initial render of the component.
-  // The empty array must be as a parameter to tell to React that
-  // it'll happen after it renders the component
-
   useEffect(() => {
     getSerie();
   }, []);
@@ -38,19 +28,17 @@ function SeriesDetailsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Make a request to the backend to add the review
     const requestBody = {
-      review: review,
+      content: review.content,
+      rating: review.rating,
       serieId: serieId,
     };
 
-    // Make a POST request to add the review
     seriesService
       .addReview(requestBody)
       .then((response) => {
-        // Refresh the serie data
         getSerie();
-        setReview("");
+        setReview({ content: "", rating: "" });
       })
       .catch((error) => console.log(error));
   };
@@ -61,7 +49,7 @@ function SeriesDetailsPage() {
         <div>
           <h1>{serie.title}</h1>
           <p>{serie.year}</p>
-          <img src={serie.image} />
+          <img src={serie.image} alt={serie.title} />
           <div>
             <h3>Reviews</h3>
             {serie.reviews.map((review) => (
@@ -70,10 +58,21 @@ function SeriesDetailsPage() {
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
+                value={review.content}
+                onChange={(e) =>
+                  setReview({ ...review, content: e.target.value })
+                }
                 placeholder="Add a review"
               />
+
+              <Rating
+                name="serie-rating"
+                value={review.rating ? parseFloat(review.rating) : 0}
+                onChange={(event, newValue) => {
+                  setReview({ ...review, rating: newValue.toString() });
+                }}
+              />
+
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -87,6 +86,8 @@ function SeriesDetailsPage() {
       <Link to="/series">
         <button>Back to series</button>
       </Link>
+
+      <Box sx={{ width: 200, display: "flex", alignItems: "center" }}></Box>
     </div>
   );
 }

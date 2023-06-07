@@ -26,7 +26,7 @@ function MoviesListPage() {
   };
 
   useEffect(() => {
-    getAllMovies();
+    getAllMovies();  
   }, []);
 
   const handleYearChange = (event) => {

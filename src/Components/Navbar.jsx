@@ -1,55 +1,55 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../Context/auth.context';
-import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Context/auth.context";
+import { styled, alpha } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: '#000',
+  backgroundColor: "#000",
   zIndex: theme.zIndex.drawer + 1,
-  width: '100%',
+  width: "100%",
   top: 0,
   left: 0,
 }));
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
   borderRadius: theme.shape.borderRadius,
   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
+  "&:hover": {
     backgroundColor: alpha(theme.palette.common.white, 0.25),
   },
   marginLeft: theme.spacing(2),
-  width: 'auto',
+  width: "auto",
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
+const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
-  '& .MuiInputBase-input': {
+  color: "inherit",
+  "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: '20ch',
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("md")]: {
+      width: "20ch",
     },
   },
 }));
@@ -57,7 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage = location.pathname === "/";
 
   return (
     <CustomAppBar position="absolute">
@@ -65,42 +65,49 @@ const Navbar = () => {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           WatchVerse
         </Typography>
-        <Box sx={{ display: 'flex' }}>
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <Button color="inherit" sx={{ textTransform: 'none' }}>
+        <Box sx={{ display: "flex" }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Button color="inherit" sx={{ textTransform: "none" }}>
               Home
             </Button>
           </Link>
           {isLoggedIn ? (
             <>
-              <Link to="/movies" style={{ textDecoration: 'none' }}>
-                <Button color="inherit" sx={{ textTransform: 'none' }}>
+              <Link to="/movies" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
                   Movies
                 </Button>
               </Link>
-              <Link to="/series" style={{ textDecoration: 'none' }}>
-                <Button color="inherit" sx={{ textTransform: 'none' }}>
+              <Link to="/series" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
                   Series
                 </Button>
               </Link>
-              <Link to={`/profile/${user._id}`} style={{ textDecoration: 'none' }}>
-                <Button color="inherit" sx={{ textTransform: 'none' }}>
+              <Link
+                to={`/profile/${user._id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Button color="inherit" sx={{ textTransform: "none" }}>
                   Profile
                 </Button>
               </Link>
-              <Button color="inherit" onClick={logOutUser} sx={{ textTransform: 'none' }}>
+              <Button
+                color="inherit"
+                onClick={logOutUser}
+                sx={{ textTransform: "none" }}
+              >
                 Logout
               </Button>
             </>
           ) : (
             <>
-              <Link to="/signup" style={{ textDecoration: 'none' }}>
-                <Button color="inherit" sx={{ textTransform: 'none' }}>
+              <Link to="/signup" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
                   Signup
                 </Button>
               </Link>
-              <Link to="/login" style={{ textDecoration: 'none' }}>
-                <Button color="inherit" sx={{ textTransform: 'none' }}>
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                <Button color="inherit" sx={{ textTransform: "none" }}>
                   Login
                 </Button>
               </Link>
@@ -113,7 +120,7 @@ const Navbar = () => {
           </SearchIconWrapper>
           <StyledInputBase
             placeholder="Search…"
-            inputProps={{ 'aria-label': 'search' }}
+            inputProps={{ "aria-label": "search" }}
           />
         </Search>
       </Toolbar>
@@ -122,8 +129,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-

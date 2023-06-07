@@ -61,8 +61,8 @@ function MoviesDetailsPage() {
             <h3>Reviews</h3>
             {movie && movie.reviews.length > 0 ? (
               movie.reviews.map((review) => {
-                console.log("Review Content:", review.content);
-                console.log("Review Rating:", review.rating);
+                /* console.log("Review Content:", review.content);
+                console.log("Review Rating:", review.rating); */
                 return (
                   <div key={review._id}>
                     <p>Review: {review.content}</p>

@@ -23,10 +23,10 @@ class MoviesService {
 
   //POST upload images
   uploadImage = (file) => {
-  return api.post("/upload", file)
-    .then(res => res.data)
-    .catch(errorHandler);
-};
+    return this.api
+      .post("/api/upload", file)
+      .then((res) => res.data)
+  };
 
   // POST /api/movies
   createMovie = (requestBody) => {

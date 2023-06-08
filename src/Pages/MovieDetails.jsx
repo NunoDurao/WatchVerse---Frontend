@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import "../../public/style/MoviesListPage.css";
+import "../../public/style/MoviesDetailsPage.css";
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -33,18 +33,18 @@ function MoviesDetailsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Make a request to the backend to add the review
+    // Faça uma requisição ao backend para adicionar a avaliação
     const requestBody = {
       content: review.content,
       rating: review.rating,
       user: user,
     };
 
-    // Make a POST request to add the review
+    // Faça uma requisição POST para adicionar a avaliação
     moviesService
       .addReview(movieId, requestBody)
       .then(() => {
-        // Refresh the movie data
+        // Atualize os dados do filme
         getMovie();
         setReview({ content: "", rating: "" });
       })
@@ -58,12 +58,12 @@ function MoviesDetailsPage() {
           <h1>{movie.title}</h1>
           <p>{movie.year}</p>
           <img src={movie.image} alt={movie.title} className="movie-image" />
-          <div>
+          <div className="movie-reviews">
             <h3>Reviews</h3>
             {movie && movie.reviews.length > 0 ? (
               movie.reviews.map((review) => {
                 return (
-                  <div key={review._id}>
+                  <div key={review._id} className="review-item">
                     <p>Review: {review.content}</p>
                     <p>Rating: {review.rating}</p>
                   </div>
@@ -117,5 +117,6 @@ function MoviesDetailsPage() {
 }
 
 export default MoviesDetailsPage;
+
 
 

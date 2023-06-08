@@ -53,8 +53,6 @@ function MoviesDetailsPage() {
   };
 
   return (
-    <div>
-    <div className="random-movies-page-image"></div>
     <div className="movie-details">
       {movie && (
         <div>
@@ -136,7 +134,6 @@ function MoviesDetailsPage() {
           alignItems: "center",
         }}
       ></Box>
-    </div>
     </div>
   );
 }

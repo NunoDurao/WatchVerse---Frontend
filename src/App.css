@@ -1,9 +1,3 @@
-/*body {
-  background-image: url("../joker.jpg");
-  background-size: cover;
-  background-position: center center;
-}*/
-
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -107,7 +101,7 @@
 }
 
 .random-series-page-image{
-  background-image: url("../public/breaking-bad.jpg");
+  background-image: url("../public/daredevil.jpg");
   background-size: cover;
   background-position: center center;
   position: fixed;

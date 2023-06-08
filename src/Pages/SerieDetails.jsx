@@ -52,8 +52,6 @@ function SeriesDetailsPage() {
   };
 
   return (
-    <div>
-    <div className="random-series-page-image"></div>
     <div className="series-details">
       {serie && (
         <div>
@@ -114,7 +112,6 @@ function SeriesDetailsPage() {
           alignItems: "center",
         }}
       ></Box>
-    </div>
     </div>
   );
 }

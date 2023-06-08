@@ -92,11 +92,6 @@ const Navbar = () => {
           WatchVerse
         </Typography>
         <Box sx={{ display: "flex" }}>
-          <Link to="/movies" style={{ textDecoration: "none" }}>
-            <Button color="inherit" sx={{ textTransform: "none" }}>
-              Home
-            </Button>
-          </Link>
           {isLoggedIn ? (
             <>
               <Link to="/movies" style={{ textDecoration: "none" }}>

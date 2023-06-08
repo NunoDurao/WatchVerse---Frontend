@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import authService from "../Services/auth.service";
-import "../style/HomePage.css"
+//import "../style/HomePage.css"
 
 function SignUpPage() {
   const [email, setEmail] = useState("");

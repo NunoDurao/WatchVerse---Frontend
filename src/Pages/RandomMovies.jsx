@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moviesService from "../Services/movies.service";
+import "./App"
 
 function RandomMovies() {
   const [randomMovieId, setRandomMovieId] = useState("");
@@ -27,6 +28,7 @@ function RandomMovies() {
 
   return (
     <div>
+    <div className="random-movies-page-image"></div>
       <h1>Random Movies</h1>
       {randomMovieId && (
         <Link to={`/movies/${randomMovieId}`}>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import "./style/MoviesListPage.css"
+import "./style/MoviesListPage.css";
 import AddMovie from "./AddMovies";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
@@ -51,23 +51,24 @@ function MoviesListPage() {
       <AddMovie refreshMovies={getAllMovies} />
       <div className="content-container">
         <Grid container spacing={2}>
-          {currentMovies && currentMovies.map((movie) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
-              <Link to={`/movies/${movie._id}`}>
-                <div className="movie-card">
-                  <CardMedia
-                    component="img"
-                    src={movie.image}
-                    alt={movie.title}
-                    className="movie-image"
-                  />
-                  <div className="movie-overlay">
-                    {/* Add additional elements or information */}
+          {currentMovies &&
+            currentMovies.map((movie) => (
+              <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
+                <Link to={`/movies/${movie._id}`}>
+                  <div className="movie-card">
+                    <CardMedia
+                      component="img"
+                      src={movie.image}
+                      alt={movie.title}
+                      className="movie-image"
+                    />
+                    <div className="movie-overlay">
+                      {/* Add additional elements or information */}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </Grid>
-          ))}
+                </Link>
+              </Grid>
+            ))}
         </Grid>
         <div>
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>

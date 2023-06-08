@@ -66,8 +66,15 @@ function MoviesDetailsPage() {
           <div className="movie-reviews">
             <h3>Reviews</h3>
             {movie.reviews.map((review) => (
-              <div key={review._id}>
-                <p>{review.user.name}</p>
+              <div
+                key={review._id}
+                style={{
+                  backgroundColor: "#f1f1f1",
+                  border: "1px solid #ccc",
+                  padding: "10px",
+                  marginBottom: "10px",
+                }}
+              >
                 <p>{review.content}</p>
                 <p>Rating: {review.rating}</p>
               </div>

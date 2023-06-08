@@ -73,7 +73,12 @@ function MoviesListPage() {
         {currentMovies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
             <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                aspectRatio: "unset",
+              }}
             >
               <Link to={`/movies/${movie._id}`}>
                 <div style={{ position: "relative", flex: 1 }}>

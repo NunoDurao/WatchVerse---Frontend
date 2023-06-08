@@ -1,10 +1,13 @@
-  .movie-details-image {
-    max-width: 100%;
+.movie-details-image {
+    max-width: 300px;
+    max-height: 400px;
+    width: auto;
     height: auto;
     margin-bottom: 20px;
-    object-fit: cover; /* Adiciona o efeito de cobrir a imagem */
-    object-position: center; /* Centraliza a imagem */
+    object-fit: cover;
+    object-position: center;
   }
+  
   
 
   

@@ -11,13 +11,11 @@ const PAGE_SIZE = 12; // Number of movies per page
 
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
-
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [watchedMovies, setWatchedMovies] = useState([]);
+  const [likedMovies, setLikedMovies] = useState([]); 
   const getAllMovies = () => {
-    const url = selectedYear
-      ? `${API_URL}/api/movies?year=${selectedYear}`
-      : `${API_URL}/api/movies`;
+    const url = `${API_URL}/api/movies`;
 
     axios
       .get(url)
@@ -30,13 +28,22 @@ function MoviesListPage() {
   }, []);
 
 
-  const handleLikeMovie = (movieId) => {
-    // Logic to add movie to liked movies
-  };
+ const handleLikeMovie = (movieId) => {
+   // Find the movie in the movies array based on the movieId
+   const likedMovie = movies.find((movie) => movie._id === movieId);
+   setLikedMovies((prevLikedMovies) => [...prevLikedMovies, likedMovie]);
+ };
 
-  const handleCheckMovie = (movieId) => {
-    // Logic to add movie to watched movies
-  };
+ const handleCheckMovie = (movieId) => {
+   // Find the movie in the movies array based on the movieId
+   const watchedMovie = movies.find((movie) => movie._id === movieId);
+
+   setWatchedMovies((prevWatchedMovies) => [
+     ...prevWatchedMovies,
+     watchedMovie,
+   ]);
+ };
+
 
   // Calculate total number of pages based on movies count and page size
   const totalPages = Math.ceil(movies.length / PAGE_SIZE);

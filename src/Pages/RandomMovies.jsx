@@ -9,7 +9,9 @@ function RandomMovies() {
 
   const getRandomMovieId = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}api/movies`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_SERVER_URL}api/movies`
+      );
       const movies = response.data;
       const randomIndex = Math.floor(Math.random() * movies.length);
       const movieId = movies[randomIndex]._id;
@@ -21,21 +23,18 @@ function RandomMovies() {
 
   useEffect(() => {
     getRandomMovieId();
+    console.log(randomMovieId);
   }, []);
 
   return (
     <div>
       <h1>Random Movies</h1>
-      {randomMovieId && (
-        <Link to={`/movies/${randomMovieId}`}>
-          <button>Go to Random Movie</button>
-        </Link>
-      )}
+
+      <Link to={`/movies/${randomMovieId}`}>
+        <button>Go to Random Movie</button>
+      </Link>
     </div>
   );
 }
 
 export default RandomMovies;
-
-
-

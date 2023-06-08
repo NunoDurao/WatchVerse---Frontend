@@ -82,8 +82,8 @@ function MoviesListPage() {
                     src={movie.image}
                     alt={movie.title}
                     style={{
-                      objectFit: "contain",
                       maxHeight: "100%",
+                      objectFit: "cover",
                     }}
                   />
                   <CheckSharpIcon

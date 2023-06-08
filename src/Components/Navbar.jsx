@@ -91,11 +91,10 @@ const Navbar = () => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, marginLeft: "10px" }}
+          sx={{ flexGrow: 1, marginLeft: "50px" }}
         >
           WatchVerse
         </Typography>
-
         <Box sx={{ display: "flex" }}>
           {isLoggedIn ? (
             <>

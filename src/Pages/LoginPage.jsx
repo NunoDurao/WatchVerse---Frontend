@@ -43,7 +43,7 @@ function LoginPage() {
     const requestBody = { email, password };
 
     axios
-      .post(`${import.meta.env}/auth/login`,requestBody) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
+      .post(`${import.meta.env.VITE_APP_SERVER_URL}/auth/login`,requestBody) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
       .then((response) => {
         console.log(response.data);
         navigate("/");
@@ -64,7 +64,7 @@ function LoginPage() {
 
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_API_URL}/auth/signup`,
+          `${import.meta.env.VITE_APP_SERVER_URL}/auth/signup`,
           body
         );
 

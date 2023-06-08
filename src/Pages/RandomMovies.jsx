@@ -9,7 +9,7 @@ function RandomMovies() {
 
   const getRandomMovieId = async () => {
     try {
-      const response = await axios.get(`${import.meta.env}api/movies`);
+      const response = await axios.get(`${import.meta.env.VITE_APP_SERVER_URL}api/movies`);
       const movies = response.data;
       const randomIndex = Math.floor(Math.random() * movies.length);
       const movieId = movies[randomIndex]._id;

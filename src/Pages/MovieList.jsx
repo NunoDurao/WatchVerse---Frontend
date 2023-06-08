@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import "./MoviesListPage.css"; // Import the CSS file for styling
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 const PAGE_SIZE = 12; // Number of movies per page
@@ -52,26 +53,16 @@ function MoviesListPage() {
         {currentMovies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
             <Link to={`/movies/${movie._id}`}>
-              <div style={{ position: "relative", height: "100%" }}>
+              <div className="movie-card">
                 <CardMedia
                   component="img"
                   src={movie.image}
                   alt={movie.title}
-                  style={{
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center",
-                  }}
+                  className="movie-image"
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    display: "flex",
-                  }}
-                ></div>
+                <div className="movie-overlay">
+                  {/* Add additional elements or information */}
+                </div>
               </div>
             </Link>
           </Grid>

@@ -56,9 +56,10 @@ body {
 
 
 .white-text {
-  font-family: 'Special Elite', cursive;
-  font-size: 48px; /* Ajuste o tamanho conforme necessário */
-  color: #FFFFFF; /* Cor do texto */
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 48px; 
+  color: #FFFFFF; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 

@@ -1,12 +1,7 @@
 body {
-  background-color: black;
-}
-
-.homepage-container{
-background-image: url("../joker.jpg");
-background-size: cover;
-background-position: center center;
-
+  background-image: url("../joker.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
 #root {

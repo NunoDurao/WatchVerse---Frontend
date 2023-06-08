@@ -41,8 +41,7 @@ function SignUpPage() {
   };
 
   return (
-    <div>
-    <div className="homepage-background"></div>
+    <div className="homepage-background">
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className="signup-page">

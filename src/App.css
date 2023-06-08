@@ -106,12 +106,13 @@
   z-index: -1;
 }
 
-.movie-list-page-background{
-  background-color: red;
-  background-size: cover;
-  background-size: cover;
-  background-position: center center;
+.movie-list-page-container {
   position: fixed;
-
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: red; /* Substitua por sua cor de fundo desejada */
 }
+
 

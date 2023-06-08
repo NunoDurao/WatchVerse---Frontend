@@ -91,7 +91,7 @@ const Navbar = () => {
         <Typography
           variant="h6"
           component="div"
-          sx={{ flexGrow: 1, paddingLeft: "10px" }}
+          sx={{ flexGrow: 1, paddingLeft: "2px" }}
         >
           WatchVerse
         </Typography>

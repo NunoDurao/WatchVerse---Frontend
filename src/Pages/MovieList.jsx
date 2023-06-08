@@ -68,42 +68,46 @@ function MoviesListPage() {
         {currentMovies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
             <Link to={`/movies/${movie._id}`}>
-              <div style={{ position: "relative", flex: 1 }}>
+              <div style={{ position: "relative", height: "100%" }}>
                 <CardMedia
                   component="img"
                   src={movie.image}
                   alt={movie.title}
                   style={{
-                    maxHeight: "100%",
+                    height: "100%",
                     objectFit: "cover",
+                    objectPosition: "center",
                   }}
                 />
-                <CheckSharpIcon
-                  onClick={() => handleCheckMovie(movie._id)}
+                <div
                   style={{
                     position: "absolute",
-                    top: 10,
-                    right: 10,
-                    color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    borderRadius: "50%",
-                    padding: 5,
-                    zIndex: 1, // Ensure the button is positioned above the card
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    display: "flex",
                   }}
-                />
-                <FavoriteIcon
-                  onClick={() => handleLikeMovie(movie._id)}
-                  style={{
-                    position: "absolute",
-                    top: 10,
-                    left: 10,
-                    color: "white",
-                    backgroundColor: "rgba(0, 0, 0, 0.5)",
-                    borderRadius: "50%",
-                    padding: 5,
-                    zIndex: 1, // Ensure the button is positioned above the card
-                  }}
-                />
+                >
+                  <CheckSharpIcon
+                    onClick={() => handleCheckMovie(movie._id)}
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                      marginRight: 10,
+                    }}
+                  />
+                  <FavoriteIcon
+                    onClick={() => handleLikeMovie(movie._id)}
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                    }}
+                  />
+                </div>
               </div>
             </Link>
           </Grid>

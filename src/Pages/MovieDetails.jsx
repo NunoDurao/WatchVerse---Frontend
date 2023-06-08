@@ -6,7 +6,6 @@ import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import "../../public/style/MoviesDetailsPage.css";
-import Button from "@mui/material/Button";
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -97,9 +96,9 @@ function MoviesDetailsPage() {
                   />
                 </Box>
 
-                <Button variant="contained" type="submit">
+                <button variant="contained" type="submit">
                   Submit
-                </Button>
+                </button>
               </form>
             </Box>
           </div>
@@ -107,11 +106,11 @@ function MoviesDetailsPage() {
       )}
 
       <Link to={`/movies/edit/${movieId}`}>
-        <Button variant="contained">Edit Movie</Button>
+        <button variant="contained">Edit Movie</button>
       </Link>
 
       <Link to="/movies">
-        <Button variant="contained">Back to Movies</Button>
+        <button variant="contained">Back to Movies</button>
       </Link>
 
       <Box

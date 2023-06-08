@@ -1,16 +1,18 @@
-import { color } from "@mui/system";
-import "../App.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import "../../public/style/HomePage.css"
+import "../styles/HomePage.css";
 
 function HomePage() {
   return (
     <div className="homepage-container">
+      <div className="homepage-background"></div>
       <div className="homepage-overlay"></div>
       <div className="text-white homepage-content center-content">
         <div className="right-aligned-content">
           <h1 className="white-text">WatchVerse</h1>
-          <h2 className="white-text">WatchVerse and chill... with a random thrill!</h2>
+          <h2 className="white-text">
+            WatchVerse and chill... with a random thrill!
+          </h2>
         </div>
         <div className="right-aligned-buttons">
           <Link to="/signup" style={{ textDecoration: "none" }}>
@@ -30,3 +32,4 @@ function HomePage() {
 }
 
 export default HomePage;
+

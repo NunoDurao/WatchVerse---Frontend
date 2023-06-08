@@ -1,24 +1,29 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../Context/auth.context";
 import seriesService from "../Services/series.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import "../../public/style/SeriesDetailsPage.css";
 
 function SeriesDetailsPage() {
-  const [serie, setSeries] = useState(null);
+  const [serie, setSerie] = useState(null);
   const [review, setReview] = useState({ content: "", rating: "" });
+
   const { serieId } = useParams();
 
-  const getSerie = () => {
-    seriesService
-      .getSerie(serieId)
-      .then((response) => {
-        const oneSerie = response.data;
-        console.log("one serie info", oneSerie);
-        setSeries(oneSerie);
-      })
-      .catch((error) => console.log(error));
+  const { user } = useContext(AuthContext);
+
+  const getSerie = async () => {
+    try {
+      const response = await seriesService.getSerie(serieId);
+      const oneSerie = response.data;
+      console.log("Serie Data:", oneSerie);
+      setSerie(oneSerie);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
@@ -28,15 +33,18 @@ function SeriesDetailsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Make a request to the backend to add the review
     const requestBody = {
       content: review.content,
       rating: review.rating,
-      serieId: serieId,
+      user: user,
     };
 
+    // Make a POST request to add the review
     seriesService
-      .addReview(requestBody)
-      .then((response) => {
+      .addReview(serieId, requestBody)
+      .then(() => {
+        // Refresh the serie data
         getSerie();
         setReview({ content: "", rating: "" });
       })
@@ -44,17 +52,27 @@ function SeriesDetailsPage() {
   };
 
   return (
-    <div className="serie-details">
+    <div className="series-details">
       {serie && (
         <div>
           <h1>{serie.title}</h1>
           <p>{serie.year}</p>
-          <img src={serie.image} alt={serie.title} />
-          <div>
+          <img className="series-details-image" src={serie.image} alt={serie.title} />
+          <div className="series-reviews">
             <h3>Reviews</h3>
-            {serie.reviews.map((review) => (
-              <p key={review._id}>{review.review}</p>
-            ))}
+            {serie && serie.reviews.length > 0 ? (
+              serie.reviews.map((review) => {
+                return (
+                  <div className="review-item" key={review._id}>
+                    <p>Review: {review.content}</p>
+                    <p>Rating: {review.rating}</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p>No reviews available</p>
+            )}
+
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -66,7 +84,7 @@ function SeriesDetailsPage() {
               />
 
               <Rating
-                name="serie-rating"
+                name="series-rating"
                 value={review.rating ? parseFloat(review.rating) : 0}
                 onChange={(event, newValue) => {
                   setReview({ ...review, rating: newValue.toString() });
@@ -80,16 +98,23 @@ function SeriesDetailsPage() {
       )}
 
       <Link to={`/series/edit/${serieId}`}>
-        <button>Edit series</button>
+        <button>Edit Series</button>
       </Link>
 
       <Link to="/series">
-        <button>Back to series</button>
+        <button>Back to Series</button>
       </Link>
 
-      <Box sx={{ width: 200, display: "flex", alignItems: "center" }}></Box>
+      <Box
+        sx={{
+          width: 200,
+          display: "flex",
+          alignItems: "center",
+        }}
+      ></Box>
     </div>
   );
 }
 
 export default SeriesDetailsPage;
+

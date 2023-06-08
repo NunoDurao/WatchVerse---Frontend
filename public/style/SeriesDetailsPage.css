@@ -1,0 +1,10 @@
+.series-details-image {
+    max-width: 300px;
+    max-height: 400px;
+    width: 500px;
+    height: 500px;
+    margin-bottom: 20px;
+    object-fit: cover;
+    object-position: center;
+  }
+  

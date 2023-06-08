@@ -111,7 +111,7 @@ function LoginPage() {
             alignItems: "center",
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h5" color="white">
             Login
           </Typography>
           <Box
@@ -130,10 +130,11 @@ function LoginPage() {
               autoComplete="email"
               autoFocus
               value={email}
-              onChange={handleEmailChange}
-              InputLabelProps={{
-                shrink: true,
+              onChange={handleEmail}
+              InputProps={{
+                style: { backgroundColor: "white" },
               }}
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               margin="normal"
@@ -145,10 +146,11 @@ function LoginPage() {
               id="password"
               autoComplete="current-password"
               value={password}
-              onChange={handlePasswordChange}
-              InputLabelProps={{
-                shrink: true,
+              onChange={handlePassword}
+              InputProps={{
+                style: { backgroundColor: "white" },
               }}
+              InputLabelProps={{ shrink: true }}
             />
             <Button
               type="submit"
@@ -159,6 +161,15 @@ function LoginPage() {
             >
               Login
             </Button>
+            {user ? (
+              <Typography component="p" variant="body2" color="white">
+                You are logged in
+              </Typography>
+            ) : (
+              <Typography component="p" variant="body2" color="white">
+                You are logged out
+              </Typography>
+            )}
             {errorMessage && (
               <Typography
                 component="p"
@@ -171,8 +182,8 @@ function LoginPage() {
             )}
             <Grid container justifyContent="center">
               <Grid item>
-                <Typography component="p" variant="body2">
-                  Don't have an account? <Link to="/signup">Sign Up</Link>
+                <Typography component="p" variant="body2" color="white">
+                  Don't have an account yet? <Link to={"/signup"}>Sign Up</Link>
                 </Typography>
               </Grid>
             </Grid>

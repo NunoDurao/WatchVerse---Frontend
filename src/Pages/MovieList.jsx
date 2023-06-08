@@ -5,7 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import "../../public/style/MoviesListPage.css";
+import "../../public/style/MoviesListPage.css"
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 const PAGE_SIZE = 12; // Number of movies per page
@@ -81,3 +81,4 @@ function MoviesListPage() {
 }
 
 export default MoviesListPage;
+

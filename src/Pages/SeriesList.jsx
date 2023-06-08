@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
 import "../../public/style/SeriesListPage.css";
+import AddSeries from "./AddSeries";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 const PAGE_SIZE = 12; // Number of series per page
@@ -46,6 +47,7 @@ function SeriesListPage() {
 
   return (
     <div className="series-list-page">
+      <AddSeries refreshSeries={getAllSeries} />
       <Grid container spacing={2}>
         {currentSeries.map((serie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={serie._id}>
@@ -78,6 +80,3 @@ function SeriesListPage() {
 }
 
 export default SeriesListPage;
-
-
-

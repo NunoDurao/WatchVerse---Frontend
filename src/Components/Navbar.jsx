@@ -96,7 +96,7 @@ const Navbar = () => {
             alignItems: "center",
           }}
         >
-          <h5 style={{ margin: 0 }}>WatchVerse</h5>
+          <h3 style={{ margin: 0 }}>WatchVerse</h3>
         </div>
         <Box sx={{ display: "flex" }}>
           {isLoggedIn ? (

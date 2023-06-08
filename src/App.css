@@ -1,8 +1,8 @@
-body {
+/*body {
   background-image: url("../joker.jpg");
   background-size: cover;
   background-position: center center;
-}
+}*/
 
 #root {
   max-width: 1280px;

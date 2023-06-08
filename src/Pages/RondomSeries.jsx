@@ -27,6 +27,7 @@ function RandomSeries() {
 
   return (
     <div>
+    <div className="random-series-page-image"></div>
       <h1>Random Series</h1>
       {randomseriesId && (
         <Link to={`/series/${randomseriesId}`}>

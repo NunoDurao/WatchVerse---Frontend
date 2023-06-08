@@ -134,10 +134,6 @@ function LoginPage() {
               InputProps={{
                 style: { backgroundColor: "white" },
               }}
-              InputLabelProps={{
-                shrink: true,
-                style: { color: "black" },
-              }}
             />
             <TextField
               margin="normal"
@@ -150,12 +146,8 @@ function LoginPage() {
               autoComplete="current-password"
               value={password}
               onChange={handlePassword}
-              InputProps={{
+               InputProps={{
                 style: { backgroundColor: "white" },
-              }}
-              InputLabelProps={{
-                shrink: true,
-                style: { color: "black" },
               }}
             />
             <Button

@@ -62,6 +62,9 @@ function SignUpPage() {
             autoFocus
             value={email}
             onChange={handleEmail}
+            InputProps={{
+                style: { backgroundColor: "white" },
+              }}
           />
 
           <TextField
@@ -75,6 +78,9 @@ function SignUpPage() {
             autoComplete="current-password"
             value={password}
             onChange={handlePassword}
+            InputProps={{
+                style: { backgroundColor: "white" },
+              }}
           />
 
           <TextField
@@ -87,6 +93,9 @@ function SignUpPage() {
             id="name"
             value={name}
             onChange={handleName}
+            InputProps={{
+                style: { backgroundColor: "white" },
+              }}
           />
 
           <Button

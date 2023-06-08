@@ -56,8 +56,10 @@ body {
 
 
 .white-text {
-  color: white;
-  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: 'Special Elite', cursive;
+  font-size: 48px; /* Ajuste o tamanho conforme necessário */
+  color: #FFFFFF; /* Cor do texto */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .center-content {

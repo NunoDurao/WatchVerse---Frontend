@@ -47,7 +47,7 @@ function MoviesListPage() {
   };
 
   return (
-    <div className="movie-list-page-background">
+    <div className="movie-list-background-image">
     <div className="movie-list-page">
       <AddMovie refreshMovies={getAllMovies} />
       <div className="content-container">

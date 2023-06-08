@@ -63,8 +63,9 @@ function EditMoviePage() {
       });
   };
 
-  return (
-    <div className="edit-project-page">
+return (
+  <div className="edit-project-page">
+    <div className="form-box">
       <h3>Edit Movie</h3>
 
       <form onSubmit={handleFormSubmit}>
@@ -87,7 +88,7 @@ function EditMoviePage() {
       </form>
       <button onClick={deleteMovie}>Delete Movie</button>
     </div>
-  );
+  </div>
+);
 }
-
 export default EditMoviePage;

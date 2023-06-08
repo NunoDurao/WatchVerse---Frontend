@@ -65,7 +65,12 @@ function MoviesDetailsPage() {
           />
           <div className="movie-reviews">
             <h3>Reviews</h3>
-            {/* Rest of the code... */}
+            {movie.reviews.map((review) => (
+              <div key={review._id}>
+                <p>{review.content}</p>
+                <p>Rating: {review.rating}</p>
+              </div>
+            ))}
 
             <Box
               sx={{

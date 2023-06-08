@@ -55,7 +55,7 @@ function LoginPage() {
         console.log(response.data);
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/");
+        navigate("/movies");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

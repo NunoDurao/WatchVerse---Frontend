@@ -49,32 +49,37 @@ function MoviesListPage() {
   return (
     <div className="movie-list-page">
       <AddMovie refreshMovies={getAllMovies} />
-      <Grid container spacing={2}>
-        {currentMovies.map((movie) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
-            <Link to={`/movies/${movie._id}`}>
-              <div className="movie-card">
-                <CardMedia
-                  component="img"
-                  src={movie.image}
-                  alt={movie.title}
-                  className="movie-image"
-                />
-                <div className="movie-overlay">
-                  {/* Add additional elements or information */}
+      <div className="content-container">
+        <Grid container spacing={2}>
+          {currentMovies.map((movie) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
+              <Link to={`/movies/${movie._id}`}>
+                <div className="movie-card">
+                  <CardMedia
+                    component="img"
+                    src={movie.image}
+                    alt={movie.title}
+                    className="movie-image"
+                  />
+                  <div className="movie-overlay">
+                    {/* Add additional elements or information */}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-      <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous Page
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next Page
-        </button>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+        <div>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Previous Page
+          </button>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next Page
+          </button>
+        </div>
       </div>
     </div>
   );

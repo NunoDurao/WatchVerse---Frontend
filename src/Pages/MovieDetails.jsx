@@ -85,18 +85,14 @@ function MoviesDetailsPage() {
                 borderRadius: "4px",
               }}
             >
-              <form
-                onSubmit={handleSubmit}
-                style={{ display: "flex", gap: "1rem" }}
-              >
-                <TextField
-                  label="Add a review"
-                  variant="filled"
-                  size="small"
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
                   value={review.content}
                   onChange={(e) =>
                     setReview({ ...review, content: e.target.value })
                   }
+                  placeholder="Add a review"
                 />
 
                 <Rating
@@ -107,9 +103,7 @@ function MoviesDetailsPage() {
                   }}
                 />
 
-                <Button variant="contained" type="submit">
-                  Submit
-                </Button>
+                <button type="submit">Submit</button>
               </form>
             </Box>
           </div>
@@ -117,15 +111,11 @@ function MoviesDetailsPage() {
       )}
 
       <Link to={`/movies/edit/${movieId}`}>
-        <Button variant="contained" color="primary">
-          Edit Movie
-        </Button>
+        <button>Edit Movie</button>
       </Link>
 
       <Link to="/movies">
-        <Button variant="contained" color="secondary">
-          Back to Movies
-        </Button>
+        <button>Back to Movies</button>
       </Link>
 
       <Box

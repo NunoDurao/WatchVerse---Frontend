@@ -42,11 +42,11 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
-      <h1>Profile</h1>
+      <h1 color="white">Profile</h1>
       {user ? (
         <div>
-          <p>Name: {user.name}</p>
-          <p>Email: {user.email}</p>
+          <p color="white">Name: {user.name}</p>
+          <p color="white">Email: {user.email}</p>
           <div>
             <input
               type="text"

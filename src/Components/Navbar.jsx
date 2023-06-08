@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
+
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
@@ -95,52 +95,52 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <Link to="/movies" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Movies
-                </Button>
+                </button>
               </Link>
               <Link to="/random-movies" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Random Movies
-                </Button>
+                </button>
               </Link>
               <Link to="/series" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Series
-                </Button>
+                </button>
               </Link>
               <Link to="/random-series" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Random Series
-                </Button>
+                </button>
               </Link>
               <Link
                 to={`/profile/${user._id}`}
                 style={{ textDecoration: "none" }}
               >
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Profile
-                </Button>
+                </button>
               </Link>
-              <Button
+              <button
                 color="inherit"
                 onClick={logOutUser}
                 sx={{ textTransform: "none" }}
               >
                 Logout
-              </Button>
+              </button>
             </>
           ) : (
             <>
               <Link to="/signup" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Signup
-                </Button>
+                </button>
               </Link>
               <Link to="/login" style={{ textDecoration: "none" }}>
-                <Button color="inherit" sx={{ textTransform: "none" }}>
+                <button color="inherit" sx={{ textTransform: "none" }}>
                   Login
-                </Button>
+                </button>
               </Link>
             </>
           )}

@@ -5,12 +5,12 @@ import axios from "axios";
 import moviesService from "../Services/movies.service";
 
 function RandomMovies() {
-  const [randomMovieId, setRandomMovieId] = useState('');
+  const [randomMovieId, setRandomMovieId] = useState("");
 
   const getRandomMovieId = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_APP_SERVER_URL}api/movies`
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/movies`
       );
       const movies = response.data;
       console.log("api response", movies);
@@ -32,10 +32,11 @@ function RandomMovies() {
   return (
     <div>
       <h1>Random Movies</h1>
-
-      <Link to={`/movies/${randomMovieId}`}>
-        <button>Go to Random Movie</button>
-      </Link>
+      {randomMovieId && (
+        <Link to={`/movies/${randomMovieId}`}>
+          <button>Go to Random Movie</button>
+        </Link>
+      )}
     </div>
   );
 }

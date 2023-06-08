@@ -10,11 +10,13 @@ import Grid from "@mui/material/Grid";
 import CheckSharpIcon from "@mui/icons-material/CheckSharp";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_APP_SERVER_URL;
+const PAGE_SIZE = 12; // Number of movies per page
 
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
   const [selectedYear, setSelectedYear] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const getAllMovies = () => {
     const url = selectedYear
@@ -43,6 +45,27 @@ function MoviesListPage() {
     // Logic to add movie to watched movies
   };
 
+  // Calculate total number of pages based on movies count and page size
+  const totalPages = Math.ceil(movies.length / PAGE_SIZE);
+
+  // Get the current page movies based on the currentPage state
+  const currentMovies = movies.slice(
+    (currentPage - 1) * PAGE_SIZE,
+    currentPage * PAGE_SIZE
+  );
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
   return (
     <div className="movie-list-page">
       <div>
@@ -57,7 +80,7 @@ function MoviesListPage() {
       </div>
       <AddMovie refreshMovies={getAllMovies} />
       <Grid container spacing={2}>
-        {movies.map((movie) => (
+        {currentMovies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
             <Card
               sx={{ height: "100%", display: "flex", flexDirection: "column" }}
@@ -113,6 +136,14 @@ function MoviesListPage() {
           </Grid>
         ))}
       </Grid>
+      <div>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next Page
+        </button>
+      </div>
     </div>
   );
 }

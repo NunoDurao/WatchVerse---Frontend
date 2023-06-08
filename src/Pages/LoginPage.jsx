@@ -1,10 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable no-unused-vars */
+import * as React from "react";
 import { useState, useContext, useEffect } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import authService from "../Services/auth.service";
-import { AuthContext } from "../Context/auth.context";
 import firebase from "../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
@@ -12,7 +8,18 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
 } from "firebase/auth";
+import axios from "axios";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 const auth = firebase.auth();
+
+const defaultTheme = createTheme();
 
 function LoginPage() {
   const [user] = useAuthState(auth);
@@ -25,9 +32,6 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  // destructuring the authContext Object
-  const { storeToken, authenticateUser } = useContext(AuthContext);
-
   // Handle Functions that handle the change of inputs
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -38,14 +42,13 @@ function LoginPage() {
 
     const requestBody = { email, password };
 
-    authService
-      .login(requestBody)
+    axios
+      .post(
+        `http://localhost:5005/auth/login`,
+        requestBody
+      ) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
       .then((response) => {
-        storeToken(response.data.authToken);
-        console.log(response.data.authToken);
-        // authenticate the User
-        authenticateUser();
-
+        console.log(response.data);
         navigate("/");
       })
       .catch((error) => {
@@ -55,20 +58,26 @@ function LoginPage() {
   };
 
   const handleSocialAuth = async () => {
-    const body = {
-      name: user.displayName,
-      email: user.email,
-      password: user.uid,
-    };
+    if (user) {
+      const body = {
+        name: user.displayName,
+        email: user.email,
+        password: user.uid,
+      };
 
-    const response = await axios.post(
-      `${import.meta.env.VITE_API_URL}/auth/signup`,
-      body
-    );
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/auth/signup`,
+          body
+        );
 
-    storeToken(response.authToken);
-    authenticateUser();
-    navigate("/home");
+        console.log(response.data);
+        navigate("/home");
+      } catch (error) {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      }
+    }
   };
 
   useEffect(() => {
@@ -86,33 +95,104 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
-
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
-
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
-        <button type="submit">Login</button>
-      </form>
-      <button onClick={signInWithGoogle}>Sign in with Google</button>
-      <button onClick={signInWithGithub}>Sign in with Github</button>
-      <button onClick={() => auth.signOut()}>Logout</button>
-
-      {user ? <p>You are logged in</p> : <p>You are logged out</p>}
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Typography component="h1" variant="h5" color="white">
+            Login
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleLoginSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value={email}
+              onChange={handleEmail}
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={password}
+              onChange={handlePassword}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+              onClick={handleLoginSubmit}
+            >
+              Login
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 1, mb: 2 }}
+              onClick={signInWithGoogle}
+            >
+              Sign in with Google
+            </Button>
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{ mt: 1, mb: 2 }}
+              onClick={signInWithGithub}
+            >
+              Sign in with Github
+            </Button>
+            {user ? (
+              <Typography component="p" variant="body2" color="white">
+                You are logged in
+              </Typography>
+            ) : (
+              <Typography component="p" variant="body2" color="white">
+                You are logged out
+              </Typography>
+            )}
+            {errorMessage && (
+              <Typography
+                component="p"
+                variant="body2"
+                color="error"
+                sx={{ mt: 2 }}
+              >
+                {errorMessage}
+              </Typography>
+            )}
+            <Grid container justifyContent="center">
+              <Grid item>
+                <Typography component="p" variant="body2" color="white">
+                  Don't have an account yet? <Link to={"/signup"}>Sign Up</Link>
+                </Typography>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
 

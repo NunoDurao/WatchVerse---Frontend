@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import "../../public/style/MoviesListPage.css"
+import "../../public/style/MoviesListPage.css";
+import AddMovie from "./AddMovies";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 const PAGE_SIZE = 12; // Number of movies per page
@@ -47,6 +48,7 @@ function MoviesListPage() {
 
   return (
     <div className="movie-list-page">
+      <AddMovie refreshMovies={getAllMovies} />
       <Grid container spacing={2}>
         {currentMovies.map((movie) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={movie._id}>
@@ -79,4 +81,3 @@ function MoviesListPage() {
 }
 
 export default MoviesListPage;
-

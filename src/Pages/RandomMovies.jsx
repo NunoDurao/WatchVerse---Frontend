@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moviesService from "../Services/movies.service";
-import "./App"
 
 function RandomMovies() {
   const [randomMovieId, setRandomMovieId] = useState("");

@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
@@ -95,52 +95,73 @@ const Navbar = () => {
           {isLoggedIn ? (
             <>
               <Link to="/movies" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Movies
-                </button>
+                </Button>
               </Link>
               <Link to="/random-movies" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Random Movies
-                </button>
+                </Button>
               </Link>
               <Link to="/series" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Series
-                </button>
+                </Button>
               </Link>
               <Link to="/random-series" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Random Series
-                </button>
+                </Button>
               </Link>
               <Link
                 to={`/profile/${user._id}`}
                 style={{ textDecoration: "none" }}
               >
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Profile
-                </button>
+                </Button>
               </Link>
-              <button
+              <Button
                 color="inherit"
                 onClick={logOutUser}
-                sx={{ textTransform: "none" }}
+                sx={{ textTransform: "none", mx: 1, color: "white" }}
               >
                 Logout
-              </button>
+              </Button>
             </>
           ) : (
             <>
               <Link to="/signup" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Signup
-                </button>
+                </Button>
               </Link>
               <Link to="/login" style={{ textDecoration: "none" }}>
-                <button color="inherit" sx={{ textTransform: "none" }}>
+                <Button
+                  color="inherit"
+                  sx={{ textTransform: "none", mx: 1, color: "white" }}
+                >
                   Login
-                </button>
+                </Button>
               </Link>
             </>
           )}
@@ -149,5 +170,4 @@ const Navbar = () => {
     </CustomAppBar>
   );
 };
-
 export default Navbar;

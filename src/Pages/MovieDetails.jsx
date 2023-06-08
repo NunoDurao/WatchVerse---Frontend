@@ -57,7 +57,11 @@ function MoviesDetailsPage() {
         <div>
           <h1>{movie.title}</h1>
           <p>{movie.year}</p>
-          <img className="movie-details-image" src={movie.image} alt={movie.title} />
+          <img
+            className="movie-details-image"
+            src={movie.image}
+            alt={movie.title}
+          />
           <div className="movie-reviews">
             <h3>Reviews</h3>
             {movie && movie.reviews.length > 0 ? (
@@ -73,26 +77,35 @@ function MoviesDetailsPage() {
               <p>No reviews available</p>
             )}
 
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                value={review.content}
-                onChange={(e) =>
-                  setReview({ ...review, content: e.target.value })
-                }
-                placeholder="Add a review"
-              />
+            <Box
+              sx={{
+                backgroundColor: "#333",
+                padding: "1rem",
+                marginTop: "1rem",
+                borderRadius: "4px",
+              }}
+            >
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  value={review.content}
+                  onChange={(e) =>
+                    setReview({ ...review, content: e.target.value })
+                  }
+                  placeholder="Add a review"
+                />
 
-              <Rating
-                name="movie-rating"
-                value={review.rating ? parseFloat(review.rating) : 0}
-                onChange={(event, newValue) => {
-                  setReview({ ...review, rating: newValue.toString() });
-                }}
-              />
+                <Rating
+                  name="movie-rating"
+                  value={review.rating ? parseFloat(review.rating) : 0}
+                  onChange={(event, newValue) => {
+                    setReview({ ...review, rating: newValue.toString() });
+                  }}
+                />
 
-              <button type="submit">Submit</button>
-            </form>
+                <button type="submit">Submit</button>
+              </form>
+            </Box>
           </div>
         </div>
       )}
@@ -117,8 +130,3 @@ function MoviesDetailsPage() {
 }
 
 export default MoviesDetailsPage;
-
-
-
-
-

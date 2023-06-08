@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
@@ -6,6 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
+import "../../public/style/MoviesDetailsPage.css"; 
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -57,13 +57,11 @@ function MoviesDetailsPage() {
         <div>
           <h1>{movie.title}</h1>
           <p>{movie.year}</p>
-          <img src={movie.image} alt={movie.title} />
+          <img src={movie.image} alt={movie.title} className="movie-image" />
           <div>
             <h3>Reviews</h3>
             {movie && movie.reviews.length > 0 ? (
               movie.reviews.map((review) => {
-                /* console.log("Review Content:", review.content);
-                console.log("Review Rating:", review.rating); */
                 return (
                   <div key={review._id}>
                     <p>Review: {review.content}</p>
@@ -119,3 +117,4 @@ function MoviesDetailsPage() {
 }
 
 export default MoviesDetailsPage;
+

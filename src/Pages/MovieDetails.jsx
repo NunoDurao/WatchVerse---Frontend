@@ -6,7 +6,7 @@ import { AuthContext } from "../Context/auth.context";
 import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import "../style/MoviesDetailsPage.css";
+import "./style/MoviesDetailsPage.css";
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);

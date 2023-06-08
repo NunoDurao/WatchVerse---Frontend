@@ -18,7 +18,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../Context/auth.context";
-import "../style/HomePage.css";
+import "./style/HomePage.css";
 
 const auth = firebase.auth();
 

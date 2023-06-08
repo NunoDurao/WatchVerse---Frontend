@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import seriesService from "../Services/series.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import "../style/SeriesListPage.css";
+import "./style/SeriesListPage.css";
 
 function SeriesDetailsPage() {
   const [serie, setSerie] = useState(null);

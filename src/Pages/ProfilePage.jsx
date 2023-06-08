@@ -62,30 +62,8 @@ function ProfilePage() {
             />
             <button onClick={handleUpdateProfile}>Update Profile</button>
           </div>
-          <h2>Watched Movies:</h2>
-          {user.watchedMovies.length > 0 ? (
-            <ul>
-              {user.watchedMovies.map((movie) => (
-                <li key={movie._id}>{movie.title}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No watched movies.</p>
-          )}
-          <h2>Liked Movies:</h2>
-          {user.likedMovies.length > 0 ? (
-            <ul>
-              {user.likedMovies.map((movie) => (
-                <li key={movie._id}>{movie.title}</li>
-              ))}
-            </ul>
-          ) : (
-            <p>No liked movies.</p>
-          )}
         </div>
-      ) : (
-        <p>Loading user profile...</p>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -11,6 +11,7 @@ const PAGE_SIZE = 12; // Number of movies per page
 
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const getAllMovies = () => {

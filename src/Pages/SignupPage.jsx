@@ -7,8 +7,12 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 import authService from "../Services/auth.service";
+import Box from "@mui/material/Box";
 //import "../style/HomePage.css"
+
+const defaultTheme = createTheme();
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -41,11 +45,19 @@ function SignUpPage() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={defaultTheme}>
        <div className="homepage-background-signup"></div>
         <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className="signup-page">
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "relative", 
+            zIndex: 2
+          }}
+        >
         <Typography component="h1" variant="h5" color="white">
           Sign Up
         </Typography>
@@ -113,9 +125,9 @@ function SignUpPage() {
         <Typography color="light-blue">
           Already have an account? <Link to={"/login"}>Login</Link>
         </Typography>
-      </div>
+      </Box>
     </Container>
-    </>
+    </ThemeProvider>
   );
 }
 

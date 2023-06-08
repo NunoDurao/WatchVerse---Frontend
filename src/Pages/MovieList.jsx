@@ -68,16 +68,6 @@ function MoviesListPage() {
 
   return (
     <div className="movie-list-page">
-      <div>
-        <label htmlFor="year">Filter by Year:</label>
-        <input
-          type="text"
-          id="year"
-          value={selectedYear}
-          onChange={handleYearChange}
-        />
-        <button onClick={getAllMovies}>Filter</button>
-      </div>
       <AddMovie refreshMovies={getAllMovies} />
       <Grid container spacing={2}>
         {currentMovies.map((movie) => (

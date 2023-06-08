@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useContext } from "react";
 import { AuthContext } from "../Context/auth.context";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
@@ -57,7 +56,30 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar = () => {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const location = useLocation();
-  const isHomePage = location.pathname === "/"; // Change the path to match your homepage
+  const isHomePage = location.pathname === "/";
+
+  const [moviesSearch, setMoviesSearch] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [movies, setMovies] = useState([]);
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+
+    const filter = [];
+
+    movies.forEach((movie) => {
+      if (
+        movie.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        movie.genre.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
+        filter.push(movie);
+      }
+    });
+
+    setMoviesSearch(filter);
+    console.log(searchQuery);
+  };
 
   if (isHomePage) {
     return null; // Return null to hide the navbar on the homepage
@@ -135,6 +157,9 @@ const Navbar = () => {
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
           />
         </Search>
       </Toolbar>
@@ -143,3 +168,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+
+

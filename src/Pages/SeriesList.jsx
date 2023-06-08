@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import AddSeries from "./AddSeries";
 import Grid from "@mui/material/Grid";
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function SeriesListPage() {
   const [series, setSeries] = useState([]);

@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import authService from "../Services/auth.service";
 
-const API_URL = "http://localhost:5005";
+const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 
 function ProfilePage() {
   const [user, setUser] = useState(null);

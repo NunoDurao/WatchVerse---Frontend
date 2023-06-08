@@ -92,7 +92,7 @@ const Navbar = () => {
           WatchVerse
         </Typography>
         <Box sx={{ display: "flex" }}>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/movies" style={{ textDecoration: "none" }}>
             <Button color="inherit" sx={{ textTransform: "none" }}>
               Home
             </Button>
@@ -168,13 +168,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-
-
-
-
-
-

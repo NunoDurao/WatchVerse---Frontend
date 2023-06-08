@@ -1,11 +1,12 @@
 body {
-  background-image: url("../joker.jpg");
-  background-size: cover;
-  background-position: center center;
+  background-color: black;
 }
 
-.movie-list-page{
-  background-color: red;
+.homepage-container{
+background-image: url("../joker.jpg");
+background-size: cover;
+background-position: center center;
+
 }
 
 #root {

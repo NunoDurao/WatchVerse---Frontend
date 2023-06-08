@@ -18,6 +18,7 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AuthContext } from "../Context/auth.context";
+import "../../public/style/HomePage.css"
 
 const auth = firebase.auth();
 
@@ -102,6 +103,7 @@ function LoginPage() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+    <div className="homepage-background"></div>
       <Container component="main" maxWidth="xs">
         <Box
           sx={{

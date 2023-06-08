@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import "../../public/style/HomePage.css"
 import authService from "../Services/auth.service";
 
 function SignUpPage() {
@@ -44,6 +44,7 @@ function SignUpPage() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className="signup-page">
+      <div className="homepage-background"></div>
         <Typography component="h1" variant="h5" color="white">
           Sign Up
         </Typography>

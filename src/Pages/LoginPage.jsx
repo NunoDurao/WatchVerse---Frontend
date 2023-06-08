@@ -17,6 +17,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { AuthContext } from "../Context/auth.context";
 
 const auth = firebase.auth();
 
@@ -37,6 +38,8 @@ function LoginPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
 
+  const { storeToken, authenticateUser } = useContext(AuthContext);
+
   // Handle Submit of the form
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -50,6 +53,8 @@ function LoginPage() {
       ) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
       .then((response) => {
         console.log(response.data);
+        storeToken(response.data.authToken);
+        authenticateUser();
         navigate("/");
       })
       .catch((error) => {

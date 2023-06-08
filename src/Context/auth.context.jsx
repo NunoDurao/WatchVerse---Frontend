@@ -31,7 +31,7 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(response.data);
-          console.log('user: ',response.data);
+          console.log("user: ", response.data);
         })
         .catch(() => {
           // catch possibility whenever it finds an invalid token

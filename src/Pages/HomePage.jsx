@@ -9,9 +9,7 @@ function HomePage() {
       <div className="text-white homepage-content center-content">
         <div className="right-aligned-content">
           <h1 className="white-text">WatchVerse</h1>
-          <h2 className="white-text">
-            Best & free tracker of movies and series
-          </h2>
+          <h2 className="white-text">Track. Discover. Watch. WatchVerse.</h2>
         </div>
         <div className="right-aligned-buttons">
           <Link to="/signup" style={{ textDecoration: "none" }}>

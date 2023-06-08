@@ -1,14 +1,13 @@
-.movie-image {
+  .movie-details-image {
     max-width: 100%;
     height: auto;
     margin-bottom: 20px;
+    object-fit: cover; /* Adiciona o efeito de cobrir a imagem */
+    object-position: center; /* Centraliza a imagem */
   }
   
-  .movie-reviews {
-    margin-bottom: 20px;
-  }
+
   
-  .review-item {
-    margin-bottom: 10px;
-  }
+
+  
   

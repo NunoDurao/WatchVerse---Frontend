@@ -33,18 +33,18 @@ function MoviesDetailsPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Faça uma requisição ao backend para adicionar a avaliação
+    // Make a request to the backend to add the review
     const requestBody = {
       content: review.content,
       rating: review.rating,
       user: user,
     };
 
-    // Faça uma requisição POST para adicionar a avaliação
+    // Make a POST request to add the review
     moviesService
       .addReview(movieId, requestBody)
       .then(() => {
-        // Atualize os dados do filme
+        // Refresh the movie data
         getMovie();
         setReview({ content: "", rating: "" });
       })
@@ -57,13 +57,13 @@ function MoviesDetailsPage() {
         <div>
           <h1>{movie.title}</h1>
           <p>{movie.year}</p>
-          <img src={movie.image} alt={movie.title} className="movie-image" />
+          <img className="movie-details-image" src={movie.image} alt={movie.title} />
           <div className="movie-reviews">
             <h3>Reviews</h3>
             {movie && movie.reviews.length > 0 ? (
               movie.reviews.map((review) => {
                 return (
-                  <div key={review._id} className="review-item">
+                  <div className="review-item" key={review._id}>
                     <p>Review: {review.content}</p>
                     <p>Rating: {review.rating}</p>
                   </div>
@@ -117,6 +117,7 @@ function MoviesDetailsPage() {
 }
 
 export default MoviesDetailsPage;
+
 
 
 

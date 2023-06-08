@@ -53,19 +53,48 @@ function SeriesListPage() {
                     objectPosition: "center",
                   }}
                 />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    display: "flex",
+                  }}
+                >
+                  <CheckSharpIcon
+                    onClick={() => handleCheckSeries(series._id)}
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                      marginRight: 10,
+                    }}
+                  />
+                  <FavoriteIcon
+                    onClick={() => handleLikeSeries(series._id)}
+                    style={{
+                      color: "white",
+                      backgroundColor: "rgba(0, 0, 0, 0.5)",
+                      borderRadius: "50%",
+                      padding: 5,
+                    }}
+                  />
+                </div>
               </div>
             </Link>
           </Grid>
         ))}
       </Grid>
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={handlePageChange}
-        siblingCount={1}
-        boundaryCount={1}
-        color="primary"
-      />
+      <div>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Previous Page
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+          Next Page
+        </button>
+      </div>
     </div>
   );
 }

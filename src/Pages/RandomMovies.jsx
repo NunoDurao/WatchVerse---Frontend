@@ -13,11 +13,8 @@ function RandomMovies() {
         `${import.meta.env.VITE_APP_SERVER_URL}/api/movies`
       );
       const movies = response.data;
-      console.log("api response", movies);
       const randomIndex = Math.floor(Math.random() * movies.length);
-      console.log("random index", randomIndex);
       const movieId = movies[randomIndex]._id;
-      console.log("movie id random", movieId);
       setRandomMovieId(movieId);
     } catch (error) {
       console.log(error);
@@ -26,7 +23,6 @@ function RandomMovies() {
 
   useEffect(() => {
     getRandomMovieId();
-    console.log("useeffect", randomMovieId);
   }, []);
 
   return (

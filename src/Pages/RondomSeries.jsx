@@ -5,11 +5,13 @@ import axios from "axios";
 import seriesService from "../Services/series.service";
 
 function RandomSeries() {
-  const [randomseriesId, setRandomseriesId] = useState(null);
+  const [randomseriesId, setRandomseriesId] = useState('');
 
   const getRandomSeriesId = async () => {
     try {
-      const response = await axios.get("http://localhost:5005/api/series");
+      const response = await axios.get(
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/series`
+      );
       const series = response.data;
       const randomIndex = Math.floor(Math.random() * series.length);
       const seriesId = series[randomIndex]._id;

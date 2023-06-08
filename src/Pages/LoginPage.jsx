@@ -119,7 +119,6 @@ function LoginPage() {
             onSubmit={handleLoginSubmit}
             noValidate
             sx={{ mt: 1 }}
-            color="white"
           >
             <TextField
               margin="normal"
@@ -132,7 +131,9 @@ function LoginPage() {
               autoFocus
               value={email}
               onChange={handleEmail}
-              color="white"
+              InputProps={{
+                style: { backgroundColor: "white" },
+              }}
             />
             <TextField
               margin="normal"
@@ -145,7 +146,9 @@ function LoginPage() {
               autoComplete="current-password"
               value={password}
               onChange={handlePassword}
-              color="white"
+              InputProps={{
+                style: { backgroundColor: "white" },
+              }}
             />
             <Button
               type="submit"

@@ -110,7 +110,6 @@
   background-image: url("../public/wallpaper-black.jpg");
   background-size: cover;
   background-position: center center;
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

@@ -5,7 +5,7 @@ import { AuthContext } from "../Context/auth.context";
 import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import "../../public/style/MoviesDetailsPage.css";
+import "./MoviesDetailsPage.css"; // Importe o arquivo CSS para estilização
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -117,6 +117,7 @@ function MoviesDetailsPage() {
 }
 
 export default MoviesDetailsPage;
+
 
 
 

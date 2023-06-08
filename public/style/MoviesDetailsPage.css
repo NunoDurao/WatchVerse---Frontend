@@ -1,0 +1,14 @@
+.movie-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .movie-reviews {
+    margin-bottom: 20px;
+  }
+  
+  .review-item {
+    margin-bottom: 10px;
+  }
+  

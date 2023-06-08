@@ -88,13 +88,16 @@ const Navbar = () => {
   return (
     <CustomAppBar position="absolute">
       <Toolbar>
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1, paddingLeft: "2px" }}
+        <div
+          style={{
+            flexGrow: 1,
+            marginLeft: "10px",
+            display: "flex",
+            alignItems: "center",
+          }}
         >
-          WatchVerse
-        </Typography>
+          <h6 style={{ margin: 0 }}>WatchVerse</h6>
+        </div>
         <Box sx={{ display: "flex" }}>
           {isLoggedIn ? (
             <>

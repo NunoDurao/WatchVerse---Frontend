@@ -22,16 +22,6 @@ function HomePage() {
               Login
             </button>
           </Link>
-          <Link to="/movies" style={{ textDecoration: "none" }}>
-            <button className="btn btn-outline-primary btn-lg m-2">
-              Movies List
-            </button>
-          </Link>
-          <Link to="/series" style={{ textDecoration: "none" }}>
-            <button className="btn btn-outline-primary btn-lg m-2">
-              Series List
-            </button>
-          </Link>
         </div>
       </div>
     </div>

@@ -76,22 +76,26 @@ function MoviesDetailsPage() {
               }}
             >
               <form onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  value={review.content}
-                  onChange={(e) =>
-                    setReview({ ...review, content: e.target.value })
-                  }
-                  placeholder="Add a review"
-                />
+                <Box sx={{ marginBottom: "0.5rem" }}>
+                  <input
+                    type="text"
+                    value={review.content}
+                    onChange={(e) =>
+                      setReview({ ...review, content: e.target.value })
+                    }
+                    placeholder="Add a review"
+                  />
+                </Box>
 
-                <Rating
-                  name="movie-rating"
-                  value={review.rating ? parseFloat(review.rating) : 0}
-                  onChange={(event, newValue) => {
-                    setReview({ ...review, rating: newValue.toString() });
-                  }}
-                />
+                <Box sx={{ marginBottom: "0.5rem" }}>
+                  <Rating
+                    name="movie-rating"
+                    value={review.rating ? parseFloat(review.rating) : 0}
+                    onChange={(event, newValue) => {
+                      setReview({ ...review, rating: newValue.toString() });
+                    }}
+                  />
+                </Box>
 
                 <Button variant="contained" type="submit">
                   Submit

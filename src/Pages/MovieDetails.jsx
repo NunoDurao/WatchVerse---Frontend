@@ -67,6 +67,7 @@ function MoviesDetailsPage() {
             <h3>Reviews</h3>
             {movie.reviews.map((review) => (
               <div key={review._id}>
+                <p>{review.user}</p>
                 <p>{review.content}</p>
                 <p>Rating: {review.rating}</p>
               </div>

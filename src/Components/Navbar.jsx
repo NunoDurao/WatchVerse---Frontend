@@ -145,18 +145,6 @@ const Navbar = () => {
             </>
           )}
         </Box>
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase
-            placeholder="Search…"
-            inputProps={{ "aria-label": "search" }}
-            type="text"
-            value={searchQuery}
-            onChange={handleSearch}
-          />
-        </Search>
       </Toolbar>
     </CustomAppBar>
   );

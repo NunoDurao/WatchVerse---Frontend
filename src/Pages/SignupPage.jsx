@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -7,11 +6,9 @@ import {
   CssBaseline,
   TextField,
   Typography,
-  ThemeProvider,
-
 } from "@mui/material";
-import "../../public/style/HomePage.css"
 import authService from "../Services/auth.service";
+import "../../public/style/HomePage.css"
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -44,9 +41,8 @@ function SignUpPage() {
   };
 
   return (
-    <ThemeProvider theme={defaultTheme}>
-    <div className="homepage-background"></div>
     <Container component="main" maxWidth="xs">
+    <div className="homepage-background"></div>
       <CssBaseline />
       <div className="signup-page">
         <Typography component="h1" variant="h5" color="white">
@@ -109,7 +105,6 @@ function SignUpPage() {
         </Typography>
       </div>
     </Container>
-    </ThemeProvider>
   );
 }
 

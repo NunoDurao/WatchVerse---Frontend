@@ -43,7 +43,10 @@ function LoginPage() {
     const requestBody = { email, password };
 
     axios
-      .post(`${import.meta.env.VITE_APP_SERVER_URL}/auth/login`,requestBody) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
+      .post(
+        `${import.meta.env.VITE_APP_SERVER_URL}/auth/login`,
+        requestBody
+      ) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
       .then((response) => {
         console.log(response.data);
         navigate("/");
@@ -143,22 +146,6 @@ function LoginPage() {
               onClick={handleLoginSubmit}
             >
               Login
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 1, mb: 2 }}
-              onClick={signInWithGoogle}
-            >
-              Sign in with Google
-            </Button>
-            <Button
-              fullWidth
-              variant="contained"
-              sx={{ mt: 1, mb: 2 }}
-              onClick={signInWithGithub}
-            >
-              Sign in with Github
             </Button>
             {user ? (
               <Typography component="p" variant="body2" color="white">

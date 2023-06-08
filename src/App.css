@@ -95,21 +95,10 @@
 }
 
 .random-movies-page-image{
-  background-image: url("../public/star-wars-darth.jpg");
+  background-image: url("../public/Justice.jpg");
   background-size: cover;
   background-position: center center;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.movie-list-background-image {
-  background-image: url("../public/wallpaper-black.jpg");
-  background-size: cover;
-  background-position: center center;
   top: 0;
   left: 0;
   width: 100%;

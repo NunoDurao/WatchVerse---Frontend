@@ -47,7 +47,6 @@ function MoviesListPage() {
   };
 
   return (
-    <div className="movie-list-background-image">
     <div className="movie-list-page">
       <AddMovie refreshMovies={getAllMovies} />
       <div className="content-container">
@@ -83,7 +82,6 @@ function MoviesListPage() {
           </button>
         </div>
       </div>
-    </div>
     </div>
   );
 }

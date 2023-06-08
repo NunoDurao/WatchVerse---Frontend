@@ -42,8 +42,8 @@ function SignUpPage() {
 
   return (
     <Container component="main" maxWidth="xs">
+    <div className="homepage-background"></div>
       <CssBaseline />
-      <div className="homepage-background"></div>
       <div className="signup-page">
         <Typography component="h1" variant="h5" color="white">
           Sign Up

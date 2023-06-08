@@ -3,7 +3,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import Pagination from "@mui/material/Pagination";
+import CheckSharpIcon from "@mui/icons-material/CheckSharp";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;
 const PAGE_SIZE = 12; // Number of series per page
@@ -23,6 +24,14 @@ function SeriesListPage() {
     getAllSeries();
   }, []);
 
+  const handleLikeSeries = (seriesId) => {
+    // Logic to add series to liked series
+  };
+
+  const handleCheckSeries = (seriesId) => {
+    // Logic to add series to watched series
+  };
+
   // Calculate total number of pages based on series count and page size
   const totalPages = Math.ceil(series.length / PAGE_SIZE);
 
@@ -32,8 +41,16 @@ function SeriesListPage() {
     currentPage * PAGE_SIZE
   );
 
-  const handlePageChange = (event, page) => {
-    setCurrentPage(page);
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prevPage) => prevPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
   };
 
   return (
@@ -63,7 +80,7 @@ function SeriesListPage() {
                   }}
                 >
                   <CheckSharpIcon
-                    onClick={() => handleCheckSeries(series._id)}
+                    onClick={() => handleCheckSeries(serie._id)}
                     style={{
                       color: "white",
                       backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -73,7 +90,7 @@ function SeriesListPage() {
                     }}
                   />
                   <FavoriteIcon
-                    onClick={() => handleLikeSeries(series._id)}
+                    onClick={() => handleLikeSeries(serie._id)}
                     style={{
                       color: "white",
                       backgroundColor: "rgba(0, 0, 0, 0.5)",

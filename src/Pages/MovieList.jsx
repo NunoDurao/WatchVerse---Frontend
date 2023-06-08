@@ -11,7 +11,6 @@ const PAGE_SIZE = 12; // Number of movies per page
 
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
-  const [selectedYear, setSelectedYear] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const getAllMovies = () => {
@@ -29,9 +28,6 @@ function MoviesListPage() {
     getAllMovies();
   }, []);
 
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-  };
 
   const handleLikeMovie = (movieId) => {
     // Logic to add movie to liked movies

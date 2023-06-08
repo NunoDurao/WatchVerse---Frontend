@@ -6,6 +6,7 @@ import moviesService from "../Services/movies.service";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import "../../public/style/MoviesDetailsPage.css";
+import Button from "@mui/material/Button";
 
 function MoviesDetailsPage() {
   const [movie, setMovie] = useState(null);
@@ -64,18 +65,7 @@ function MoviesDetailsPage() {
           />
           <div className="movie-reviews">
             <h3>Reviews</h3>
-            {movie && movie.reviews.length > 0 ? (
-              movie.reviews.map((review) => {
-                return (
-                  <div className="review-item" key={review._id}>
-                    <p>Review: {review.content}</p>
-                    <p>Rating: {review.rating}</p>
-                  </div>
-                );
-              })
-            ) : (
-              <p>No reviews available</p>
-            )}
+            {/* Rest of the code... */}
 
             <Box
               sx={{
@@ -103,7 +93,9 @@ function MoviesDetailsPage() {
                   }}
                 />
 
-                <button type="submit">Submit</button>
+                <Button variant="contained" type="submit">
+                  Submit
+                </Button>
               </form>
             </Box>
           </div>
@@ -111,11 +103,11 @@ function MoviesDetailsPage() {
       )}
 
       <Link to={`/movies/edit/${movieId}`}>
-        <button>Edit Movie</button>
+        <Button variant="contained">Edit Movie</Button>
       </Link>
 
       <Link to="/movies">
-        <button>Back to Movies</button>
+        <Button variant="contained">Back to Movies</Button>
       </Link>
 
       <Box

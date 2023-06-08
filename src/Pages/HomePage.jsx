@@ -1,6 +1,7 @@
 import { color } from "@mui/system";
 import "../App.css";
 import { Link } from "react-router-dom";
+import "../../public/style/HomePage.css"
 
 function HomePage() {
   return (

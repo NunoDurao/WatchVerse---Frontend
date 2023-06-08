@@ -134,6 +134,7 @@ function LoginPage() {
               InputProps={{
                 style: { backgroundColor: "white" },
               }}
+              InputLabelProps={{ shrink: true }}
             />
             <TextField
               margin="normal"
@@ -149,6 +150,7 @@ function LoginPage() {
               InputProps={{
                 style: { backgroundColor: "white" },
               }}
+              InputLabelProps={{ shrink: true }}
             />
             <Button
               type="submit"

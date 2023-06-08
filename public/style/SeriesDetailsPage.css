@@ -1,8 +1,8 @@
 .series-details-image {
     max-width: 300px;
     max-height: 400px;
-    width: 600px;
-    height: 600px;
+    width: 1000px;
+    height: 1000px;
     margin-bottom: 20px;
     object-fit: cover;
     object-position: center;

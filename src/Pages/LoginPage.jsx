@@ -43,10 +43,7 @@ function LoginPage() {
     const requestBody = { email, password };
 
     axios
-      .post(
-        `http://localhost:5005/auth/login`,
-        requestBody
-      ) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
+      .post(`${import.meta.env}/auth/login`,requestBody) /*{import.meta.env.VITE_API_URL} instead of localhost with the backend */
       .then((response) => {
         console.log(response.data);
         navigate("/");

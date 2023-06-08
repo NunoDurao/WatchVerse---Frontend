@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import authService from "../Services/auth.service";
-import "../../public/style/HomePage.css"
+import "../style/HomePage.css"
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
@@ -41,10 +41,11 @@ function SignUpPage() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <>
+       <div className="homepage-background-signup"></div>
+        <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className="signup-page">
-      <div className="homepage-background"></div>
         <Typography component="h1" variant="h5" color="white">
           Sign Up
         </Typography>
@@ -105,6 +106,7 @@ function SignUpPage() {
         </Typography>
       </div>
     </Container>
+    </>
   );
 }
 

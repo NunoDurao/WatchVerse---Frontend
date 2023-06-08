@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import CardMedia from "@mui/material/CardMedia";
 import Grid from "@mui/material/Grid";
-import "../../public/style/SeriesListPage.css";
+import "../style/MoviesListPage.css";
 import AddSeries from "./AddSeries";
 
 const API_URL = import.meta.env.VITE_APP_SERVER_URL;

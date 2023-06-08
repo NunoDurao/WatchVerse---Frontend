@@ -12,8 +12,6 @@ const PAGE_SIZE = 12; // Number of movies per page
 function MoviesListPage() {
   const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [watchedMovies, setWatchedMovies] = useState([]);
-  const [likedMovies, setLikedMovies] = useState([]); 
   const getAllMovies = () => {
     const url = `${API_URL}/api/movies`;
 
@@ -26,24 +24,6 @@ function MoviesListPage() {
   useEffect(() => {
     getAllMovies();
   }, []);
-
-
- const handleLikeMovie = (movieId) => {
-   // Find the movie in the movies array based on the movieId
-   const likedMovie = movies.find((movie) => movie._id === movieId);
-   setLikedMovies((prevLikedMovies) => [...prevLikedMovies, likedMovie]);
- };
-
- const handleCheckMovie = (movieId) => {
-   // Find the movie in the movies array based on the movieId
-   const watchedMovie = movies.find((movie) => movie._id === movieId);
-
-   setWatchedMovies((prevWatchedMovies) => [
-     ...prevWatchedMovies,
-     watchedMovie,
-   ]);
- };
-
 
   // Calculate total number of pages based on movies count and page size
   const totalPages = Math.ceil(movies.length / PAGE_SIZE);
@@ -91,27 +71,7 @@ function MoviesListPage() {
                     transform: "translate(-50%, -50%)",
                     display: "flex",
                   }}
-                >
-                  <CheckSharpIcon
-                    onClick={() => handleCheckMovie(movie._id)}
-                    style={{
-                      color: "white",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)",
-                      borderRadius: "50%",
-                      padding: 5,
-                      marginRight: 10,
-                    }}
-                  />
-                  <FavoriteIcon
-                    onClick={() => handleLikeMovie(movie._id)}
-                    style={{
-                      color: "white",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)",
-                      borderRadius: "50%",
-                      padding: 5,
-                    }}
-                  />
-                </div>
+                ></div>
               </div>
             </Link>
           </Grid>

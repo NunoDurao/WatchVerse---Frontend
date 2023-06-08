@@ -1,12 +1,12 @@
-import axios from 'axios';
- 
+import axios from "axios";
+
 /* Axios Service that deals with Authentication */
 
 class AuthService {
   constructor() {
     // Create a new instance of axios with a custom configuration
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005",
+      baseURL: import.meta.env.VITE_APP_SERVER_URL,
       // We set our API's base URL so that all requests use the same base URL
     });
 
@@ -49,8 +49,8 @@ class AuthService {
     return this.api.put(`/api/profile/${id}`, requestBody);
   };
 }
- 
+
 // Create one instance object
 const authService = new AuthService();
- 
+
 export default authService;

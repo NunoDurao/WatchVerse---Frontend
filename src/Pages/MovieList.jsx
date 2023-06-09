@@ -47,7 +47,7 @@ function MoviesListPage() {
   };
 
   return (
-    <div className="movie-list-page">
+    <div className="movie-list-page" style={{ marginTop: "80px" }}>
       <AddMovie refreshMovies={getAllMovies} />
       <div className="content-container">
         <Grid container spacing={2}>

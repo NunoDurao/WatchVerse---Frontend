@@ -1,5 +1,9 @@
-body{
+body {
   background-color: black;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  z-index: 1;
 }
 
 #root {
@@ -51,11 +55,9 @@ body{
 
 /* HOMEPAGE */
 
-
-
 .white-text {
-  font-family: 'Montserrat', sans-serif;
-  color: #FFFFFF; 
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -79,8 +81,7 @@ body{
   z-index: -1;
 }
 
-
-.homepage-background-signup{
+.homepage-background-signup {
   background-image: url("../joker.jpg");
   background-size: cover;
   background-position: center center;
@@ -92,7 +93,7 @@ body{
   z-index: 0;
 }
 
-.random-movies-page-image{
+.random-movies-page-image {
   background-image: url("../public/Justice.jpg");
   background-size: cover;
   background-position: center center;
@@ -104,7 +105,7 @@ body{
   z-index: -1;
 }
 
-.random-series-page-image{
+.random-series-page-image {
   background-image: url("../public/daredevil.jpg");
   background-size: cover;
   background-position: center center;
@@ -116,7 +117,7 @@ body{
   z-index: -1;
 }
 
-.profile-page-image{
+.profile-page-image {
   background-image: url("../public/dead-pool.webp");
   background-size: cover;
   background-position: center center;
@@ -127,5 +128,3 @@ body{
   height: 100%;
   z-index: -1;
 }
-
-

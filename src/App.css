@@ -232,3 +232,11 @@ body {
 .form-button:hover {
   background-color: #777;
 }
+
+.add-series {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222;
+}

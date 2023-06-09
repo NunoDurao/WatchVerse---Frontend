@@ -23,30 +23,38 @@ function AddSeries(props) {
   };
 
   return (
-    <div className="add-series">
-      <h3 style={{ color: "white" }}>Add Series</h3>
+<div className="add-series">
+  <div className="form-container">
+    <h3 style={{ color: "white" }}>Add Series</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label style={{ color: "white" }}>Title:</label>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label className="form-label" style={{ color: "white" }}>Title:</label>
         <input
+          className="form-input"
           type="text"
           name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+      </div>
 
-        <label style={{ color: "white" }}>Year:</label>
+      <div className="form-group">
+        <label className="form-label" style={{ color: "white" }}>Year:</label>
         <input
+          className="form-input"
           type="text"
           name="year"
           value={year}
           onChange={(e) => setYear(e.target.value)}
         />
+      </div>
 
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-}
+      <button className="form-button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+  )
+};
 
 export default AddSeries;

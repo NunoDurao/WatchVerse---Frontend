@@ -56,8 +56,8 @@ function MoviesDetailsPage() {
     <div className="movie-details">
       {movie && (
         <div>
-          <h1>{movie.title}</h1>
-          <p>{movie.year}</p>
+          <h1 style={{ color: "white" }}>{movie.title}</h1>
+          <p style={{ color: "white" }}>{movie.year}</p>
           <img
             className="movie-details-image"
             src={movie.image}

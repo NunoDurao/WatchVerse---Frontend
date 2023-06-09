@@ -55,17 +55,21 @@ function SeriesDetailsPage() {
     <div className="series-details">
       {serie && (
         <div>
-          <h1>{serie.title}</h1>
-          <p>{serie.year}</p>
-          <img className="series-details-image" src={serie.image} alt={serie.title} />
+          <h1 style={{ color: "white" }}>{serie.title}</h1>
+          <p style={{ color: "white" }}>{serie.year}</p>
+          <img
+            className="series-details-image"
+            src={serie.image}
+            alt={serie.title}
+          />
           <div className="series-reviews">
-            <h3>Reviews</h3>
+            <h3 style={{ color: "white" }}>Reviews</h3>
             {serie && serie.reviews.length > 0 ? (
               serie.reviews.map((review) => {
                 return (
                   <div className="review-item" key={review._id}>
-                    <p>Review: {review.content}</p>
-                    <p>Rating: {review.rating}</p>
+                    <p style={{ color: "white" }}>Review: {review.content}</p>
+                    <p style={{ color: "white" }}>Rating: {review.rating}</p>
                   </div>
                 );
               })
@@ -117,4 +121,3 @@ function SeriesDetailsPage() {
 }
 
 export default SeriesDetailsPage;
-

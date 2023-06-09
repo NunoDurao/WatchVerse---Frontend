@@ -65,27 +65,37 @@ function EditSeriePage() {
 
   return (
     <div className="edit-project-page">
-      <h3>Edit Series</h3>
+      <h3 style={{ color: "white" }}>Edit Series</h3>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+      <form onSubmit={handleFormSubmit} className="edit-form">
+        <div className="form-group">
+          <label style={{ color: "white" }}>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="form-input"
+          />
+        </div>
 
-        <label>Year:</label>
-        <textarea
-          name="year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
+        <div className="form-group">
+          <label style={{ color: "white" }}>Year:</label>
+          <textarea
+            name="year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+            className="form-textarea"
+          />
+        </div>
 
-        <button type="submit">Edit</button>
+        <button type="submit" className="form-button">
+          Edit
+        </button>
       </form>
-      <button onClick={deleteSerie}>Delete Series</button>
+      <button onClick={deleteSerie} className="delete-button">
+        Delete Series
+      </button>
     </div>
   );
 }

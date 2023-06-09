@@ -181,3 +181,54 @@ body {
 .delete-button:hover {
   background-color: #777;
 }
+
+.add-movie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222;
+}
+
+.form-container {
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  color: white;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #333;
+  color: white;
+}
+
+.form-textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.form-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #777;
+}

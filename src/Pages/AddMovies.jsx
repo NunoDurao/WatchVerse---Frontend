@@ -49,39 +49,59 @@ function AddMovie(props) {
 
   return (
     <div className="add-movie">
-      <h3 style={{ color: "white" }}>Add Movie</h3>
+      <div className="form-container">
+        <h3 style={{ color: "white" }}>Add Movie</h3>
 
-      <form onSubmit={handleSubmit}>
-        <label style={{ color: "white" }}>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label className="form-label" style={{ color: "white" }}>
+              Title:
+            </label>
+            <input
+              className="form-input"
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
 
-        <label style={{ color: "white" }}>Year:</label>
-        <textarea
-          type="text"
-          name="description"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
+          <div className="form-group">
+            <label className="form-label" style={{ color: "white" }}>
+              Year:
+            </label>
+            <textarea
+              className="form-textarea"
+              type="text"
+              name="description"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            />
+          </div>
 
-        <label htmlFor="image">
-          {image && (
-            <div>
-              <h4 style={{ color: "white" }}>Uploaded Image:</h4>
-              <img src={image} alt="Uploaded" />
-            </div>
-          )}
-          <input type="file" onChange={(e) => handleFileUpload(e)} />
-        </label>
+          <div className="form-group">
+            <label htmlFor="image" className="form-label">
+              {image && (
+                <div>
+                  <h4 style={{ color: "white" }}>Uploaded Image:</h4>
+                  <img src={image} alt="Uploaded" />
+                </div>
+              )}
+              <input
+                className="form-input"
+                type="file"
+                onChange={(e) => handleFileUpload(e)}
+              />
+            </label>
+          </div>
 
-        {/* Display the image if the imageUrl is available */}
+          {/* Display the image if the imageUrl is available */}
 
-        <button type="submit">Submit</button>
-      </form>
+          <button className="form-button" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

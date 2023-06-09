@@ -113,7 +113,7 @@
 }
 
 .profile-page-image{
-  background-image: url("../public/avatar.jpg");
+  background-image: url("../public/profile-image.jpg");
   background-size: cover;
   background-position: center center;
   position: fixed;

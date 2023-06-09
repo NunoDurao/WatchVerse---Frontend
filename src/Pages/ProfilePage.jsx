@@ -41,6 +41,8 @@ function ProfilePage() {
   };
 
   return (
+    <div>
+    <div className="profile-page-image"></div>
     <div className="profile-page">
       <h1 style={{ color: "white" }}>Profile</h1>
       {user ? (
@@ -64,6 +66,7 @@ function ProfilePage() {
           </div>
         </div>
       ) : null}
+    </div>
     </div>
   );
 }

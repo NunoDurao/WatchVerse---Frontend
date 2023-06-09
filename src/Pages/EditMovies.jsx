@@ -63,32 +63,42 @@ function EditMoviePage() {
       });
   };
 
-return (
-  <div className="edit-project-page">
-    <div className="form-box">
-      <h3>Edit Movie</h3>
+  return (
+    <div className="edit-project-page">
+      <div className="form-box">
+        <h3 style={{ color: "white" }}>Edit Movie</h3>
 
-      <form onSubmit={handleFormSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-group">
+            <label className="form-label">Title:</label>
+            <input
+              className="form-input"
+              type="text"
+              name="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
 
-        <label>Year:</label>
-        <textarea
-          name="year"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        />
+          <div className="form-group">
+            <label className="form-label">Year:</label>
+            <textarea
+              className="form-input"
+              name="year"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            />
+          </div>
 
-        <button type="submit">Edit</button>
-      </form>
-      <button onClick={deleteMovie}>Delete Movie</button>
+          <button className="form-button" type="submit">
+            Edit
+          </button>
+        </form>
+        <button className="delete-button" onClick={deleteMovie}>
+          Delete Movie
+        </button>
+      </div>
     </div>
-  </div>
-);
+  );
 }
 export default EditMoviePage;

@@ -240,3 +240,57 @@ body {
   height: 100vh;
   background-color: #222;
 }
+
+.edit-project-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #222;
+}
+
+.form-box {
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+  background-color: #333;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #555;
+  color: white;
+}
+
+.form-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #c0392b;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #e74c3c;
+}

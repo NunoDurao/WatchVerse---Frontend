@@ -49,10 +49,10 @@ function AddMovie(props) {
 
   return (
     <div className="add-movie">
-      <h3>Add Movie</h3>
+      <h3 style={{ color: "white" }}>Add Movie</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
+        <label style={{ color: "white" }}>Title:</label>
         <input
           type="text"
           name="title"
@@ -60,7 +60,7 @@ function AddMovie(props) {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <label>Year:</label>
+        <label style={{ color: "white" }}>Year:</label>
         <textarea
           type="text"
           name="description"
@@ -71,7 +71,7 @@ function AddMovie(props) {
         <label htmlFor="image">
           {image && (
             <div>
-              <h4>Uploaded Image:</h4>
+              <h4 style={{ color: "white" }}>Uploaded Image:</h4>
               <img src={image} alt="Uploaded" />
             </div>
           )}

@@ -27,8 +27,8 @@ function RandomSeries() {
 
   return (
     <div>
-    <div className="random-series-page-image"></div>
-      <h1>Random Series</h1>
+      <div className="random-series-page-image"></div>
+      <h1 style={{ color: "white" }}>Random Series</h1>
       {randomseriesId && (
         <Link to={`/series/${randomseriesId}`}>
           <button>Go to Random series</button>

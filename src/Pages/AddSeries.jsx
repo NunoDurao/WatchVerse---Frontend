@@ -24,10 +24,10 @@ function AddSeries(props) {
 
   return (
     <div className="add-series">
-      <h3>Add Series</h3>
+      <h3 style={{ color: "white" }}>Add Series</h3>
 
       <form onSubmit={handleSubmit}>
-        <label>Title:</label>
+        <label style={{ color: "white" }}>Title:</label>
         <input
           type="text"
           name="title"
@@ -35,7 +35,7 @@ function AddSeries(props) {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        <label>Year:</label>
+        <label style={{ color: "white" }}>Year:</label>
         <input
           type="text"
           name="year"

@@ -28,7 +28,7 @@ function RandomMovies() {
   return (
     <div>
     <div className="random-movies-page-image"></div>
-      <h1>Random Movies</h1>
+      <h1 style={{ color: "white" }}>Random Movies</h1>
       {randomMovieId && (
         <Link to={`/movies/${randomMovieId}`}>
           <button>Go to Random Movie</button>

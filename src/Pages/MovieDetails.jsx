@@ -64,7 +64,7 @@ function MoviesDetailsPage() {
             alt={movie.title}
           />
           <div className="movie-reviews">
-            <h3>Reviews</h3>
+            <h3 style={{ color: "white" }}>Reviews</h3>
             {movie.reviews.map((review) => (
               <div
                 key={review._id}
@@ -75,8 +75,8 @@ function MoviesDetailsPage() {
                   marginBottom: "10px",
                 }}
               >
-                <p>{review.content}</p>
-                <p>Rating: {review.rating}</p>
+                <p style={{ color: "white" }}>{review.content}</p>
+                <p style={{ color: "white" }}>Rating: {review.rating}</p>
               </div>
             ))}
 

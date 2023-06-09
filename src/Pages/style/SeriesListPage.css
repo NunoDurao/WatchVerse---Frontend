@@ -1,8 +1,9 @@
 .series-card {
-  position: relative;
-  width: 100%; /* Set the width to maintain the original dimensions */
-  height: auto; /* Remove the height property to maintain aspect ratio */
+  position: relative; /* Remove the height property to maintain aspect ratio */
   overflow: hidden;
+      width:  100px;
+    height: 100px;
+    object-fit: cover;
 }
 
 .series-image {

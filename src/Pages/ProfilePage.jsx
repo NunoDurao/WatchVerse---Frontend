@@ -56,12 +56,6 @@ function ProfilePage() {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Enter profile photo URL"
-              value={profilePhoto}
-              onChange={(e) => setProfilePhoto(e.target.value)}
-            />
             <button onClick={handleUpdateProfile}>Update Profile</button>
           </div>
         </div>

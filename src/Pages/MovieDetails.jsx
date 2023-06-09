@@ -69,13 +69,13 @@ function MoviesDetailsPage() {
               <div
                 key={review._id}
                 style={{
-                  backgroundColor: "#f1f1f1",
+                  backgroundColor: "#433f3f",
                   border: "1px solid #ccc",
                   padding: "10px",
                   marginBottom: "10px",
                 }}
               >
-                <p style={{ color: "white" }}>{review.content}</p>
+                <p style={{ color: "white" }}>Review: {review.content}</p>
                 <p style={{ color: "white" }}>Rating: {review.rating}</p>
               </div>
             ))}

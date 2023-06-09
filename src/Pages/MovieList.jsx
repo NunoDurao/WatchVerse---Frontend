@@ -69,7 +69,7 @@ function MoviesListPage() {
               </Grid>
             ))}
         </Grid>
-        <AddMovie refreshMovies={getAllMovies} />
+
         <div>
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             Previous Page
@@ -80,6 +80,7 @@ function MoviesListPage() {
           >
             Next Page
           </button>
+          <AddMovie refreshMovies={getAllMovies} />
         </div>
       </div>
     </div>

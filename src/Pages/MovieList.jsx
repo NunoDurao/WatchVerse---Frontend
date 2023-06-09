@@ -48,7 +48,6 @@ function MoviesListPage() {
 
   return (
     <div className="movie-list-page" style={{ marginTop: "80px" }}>
-      <AddMovie refreshMovies={getAllMovies} />
       <div className="content-container">
         <Grid container spacing={2}>
           {currentMovies &&
@@ -70,6 +69,7 @@ function MoviesListPage() {
               </Grid>
             ))}
         </Grid>
+        <AddMovie refreshMovies={getAllMovies} />
         <div>
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             Previous Page

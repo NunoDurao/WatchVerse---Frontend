@@ -47,7 +47,6 @@ function SeriesListPage() {
 
   return (
     <div className="series-list-page" style={{ marginTop: "80px" }}>
-      <AddSeries refreshSeries={getAllSeries} />
       <div className="content-container">
         <Grid container spacing={2}>
           {currentSeries.map((serie) => (
@@ -68,6 +67,7 @@ function SeriesListPage() {
             </Grid>
           ))}
         </Grid>
+        <AddSeries refreshSeries={getAllSeries} />
         <div>
           <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             Previous Page

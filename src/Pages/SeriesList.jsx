@@ -46,7 +46,7 @@ function SeriesListPage() {
   };
 
   return (
-    <div className="series-list-page">
+    <div className="series-list-page" style={{ marginTop: "80px" }}>
       <AddSeries refreshSeries={getAllSeries} />
       <Grid container spacing={2}>
         {currentSeries.map((serie) => (

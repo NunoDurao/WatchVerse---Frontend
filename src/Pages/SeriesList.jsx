@@ -48,32 +48,37 @@ function SeriesListPage() {
   return (
     <div className="series-list-page" style={{ marginTop: "80px" }}>
       <AddSeries refreshSeries={getAllSeries} />
-      <Grid container spacing={2}>
-        {currentSeries.map((serie) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={serie._id}>
-            <Link to={`/series/${serie._id}`}>
-              <div className="series-card">
-                <CardMedia
-                  component="img"
-                  src={serie.image}
-                  alt={serie.title}
-                  className="series-image"
-                />
-                <div className="series-overlay">
-                  {/* Add additional elements or information */}
+      <div className="content-container">
+        <Grid container spacing={2}>
+          {currentSeries.map((serie) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={serie._id}>
+              <Link to={`/series/${serie._id}`}>
+                <div className="series-card">
+                  <CardMedia
+                    component="img"
+                    src={serie.image}
+                    alt={serie.title}
+                    className="series-image"
+                  />
+                  <div className="series-overlay">
+                    {/* Add additional elements or information */}
+                  </div>
                 </div>
-              </div>
-            </Link>
-          </Grid>
-        ))}
-      </Grid>
-      <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
-          Previous Page
-        </button>
-        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-          Next Page
-        </button>
+              </Link>
+            </Grid>
+          ))}
+        </Grid>
+        <div>
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Previous Page
+          </button>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+          >
+            Next Page
+          </button>
+        </div>
       </div>
     </div>
   );
